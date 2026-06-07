@@ -75,54 +75,38 @@ export default function About() {
       </section>
 
       {/* ── Values ────────────────────────────────────────── */}
-      <section style={{ padding: '80px 0 96px', background: 'var(--cream-dark)', borderTop: 'var(--line-soft)' }}>
+      <section className="about-philosophy">
         <div className="container">
           <span className="tag">Philosophy</span>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '48px', marginTop: '40px' }}>
+          <div className="about-philosophy-grid">
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+            <div className="philosophy-card">
               {/* ✏️ CLIENT: Replace this heading with your first value or belief */}
-              <span style={{
-                fontFamily: 'var(--font-mono)', fontSize: '0.72rem', letterSpacing: '0.08em',
-                color: 'var(--charcoal)', fontWeight: 400,
-                borderBottom: '1px solid rgba(42,41,39,0.15)', paddingBottom: '12px',
-              }}>
-                Your value here
-              </span>
+              <span className="philosophy-title">Your value here</span>
               {/* ✏️ CLIENT: Describe this value in 1–2 sentences */}
-              <p style={{ fontSize: '0.95rem', color: 'var(--charcoal-soft)', lineHeight: '1.75' }}>
+              <p className="philosophy-body">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </p>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+            <div className="philosophy-card">
               {/* ✏️ CLIENT: Replace this heading with your second value or belief */}
-              <span style={{
-                fontFamily: 'var(--font-mono)', fontSize: '0.72rem', letterSpacing: '0.08em',
-                color: 'var(--charcoal)', fontWeight: 400,
-                borderBottom: '1px solid rgba(42,41,39,0.15)', paddingBottom: '12px',
-              }}>
-                Your value here
-              </span>
+              <span className="philosophy-title">Your value here</span>
               {/* ✏️ CLIENT: Describe this value in 1–2 sentences */}
-              <p style={{ fontSize: '0.95rem', color: 'var(--charcoal-soft)', lineHeight: '1.75' }}>
+              <p className="philosophy-body">
                 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
                 nisi ut aliquip ex ea commodo consequat duis aute irure.
               </p>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+            <div className="philosophy-card">
               {/* ✏️ CLIENT: Replace this heading with your third value or belief */}
-              <span style={{
-                fontFamily: 'var(--font-mono)', fontSize: '0.72rem', letterSpacing: '0.08em',
-                color: 'var(--charcoal)', fontWeight: 400,
-                borderBottom: '1px solid rgba(42,41,39,0.15)', paddingBottom: '12px',
-              }}>
+              <span className="philosophy-title">
                 Your value here
               </span>
               {/* ✏️ CLIENT: Describe this value in 1–2 sentences */}
-              <p style={{ fontSize: '0.95rem', color: 'var(--charcoal-soft)', lineHeight: '1.75' }}>
+              <p className="philosophy-body">
                 Duis aute irure dolor in reprehenderit in voluptate velit esse
                 cillum dolore eu fugiat nulla pariatur excepteur sint occaecat.
               </p>

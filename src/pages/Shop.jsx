@@ -153,7 +153,7 @@ export default function Shop() {
           <span className="tag">Eliza Cay</span>
           <h1>Shop</h1>
           <p>
-            Limited-edition fine art prints on archival paper and original designs
+            Limited-edition fine art prints and original designs
             on quality apparel — all shipped with care.
           </p>
           {!isConfigured && (

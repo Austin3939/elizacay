@@ -857,6 +857,44 @@ input, textarea, select {
 }
 
 /* =====================
+   About — philosophy
+   ===================== */
+.about-philosophy {
+  padding: 80px 0 96px;
+  background: var(--cream-dark);
+  border-top: var(--line-soft);
+}
+
+.about-philosophy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+  margin-top: 40px;
+}
+
+.philosophy-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.philosophy-title {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--charcoal);
+  font-weight: 400;
+  border-bottom: 1px solid rgba(42,41,39,0.15);
+  padding-bottom: 12px;
+}
+
+.philosophy-body {
+  font-size: 0.95rem;
+  color: var(--charcoal-soft);
+  line-height: 1.75;
+}
+
+/* =====================
    Gallery — image-only cards
    ===================== */
 .gallery-grid {
@@ -1388,6 +1426,8 @@ input, textarea, select {
   .about-hero-inner,
   .about-story-grid { grid-template-columns: 1fr; gap: 48px; }
 
+  .about-philosophy-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+
   .hero-inner { padding: 58px 43px; }
   .hero-logo { height: 168px; }
 }
@@ -1404,7 +1444,9 @@ input, textarea, select {
 
   .process-grid { grid-template-columns: 1fr; }
 
-  .hero-inner { padding: 48px 29px; }
+  .about-philosophy-grid { grid-template-columns: 1fr; gap: 28px; }
+
+  .hero-inner { padding: 48px 20px; }
   .hero-cta { flex-direction: column; align-items: center; }
   .hero-logo { height: 144px; }
 
@@ -1412,4 +1454,19 @@ input, textarea, select {
   .footer-bottom { flex-direction: column; gap: 10px; }
 
   .form-row { grid-template-columns: 1fr; }
+
+  .shop-tabs { flex-wrap: wrap; }
+  .shop-tabs button { flex: 1; border-right: var(--line) !important; }
+
+  .filter-bar { flex-wrap: wrap; }
+  .filter-bar li button { border-right: var(--line-soft) !important; }
+
+  .design-info { padding: 32px var(--pad) 64px; }
+  .design-option-footer { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .design-option-footer .btn { width: 100%; text-align: center; }
+
+  .cart-drawer { width: 100vw; }
+
+  .page-header { padding: 48px 0 36px; }
+  .page-header h1 { font-size: 1.6rem; }
 }

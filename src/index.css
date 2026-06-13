@@ -953,6 +953,130 @@ main { position: relative; z-index: 1; }
 }
 
 /* =====================
+   Product Detail Page
+   ===================== */
+.product-page {
+  min-height: 60vh;
+  padding-bottom: 80px;
+}
+
+.product-image-wrap {
+  width: 100%;
+  max-height: 520px;
+  overflow: hidden;
+  background: var(--cream-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-image-wrap img {
+  width: 100%;
+  height: 100%;
+  max-height: 520px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.product-body {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 48px 0 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-back {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: var(--charcoal-soft);
+  text-decoration: none;
+  margin-bottom: 28px;
+}
+
+.product-back:hover { color: var(--charcoal); }
+
+.product-title {
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--charcoal);
+  margin: 0 0 16px;
+  line-height: 1.15;
+}
+
+.product-price {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--charcoal);
+  margin-bottom: 28px;
+}
+
+.product-variants {
+  margin-bottom: 28px;
+}
+
+.product-variant-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--charcoal-soft);
+  display: block;
+  margin-bottom: 10px;
+}
+
+.product-variant-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.product-atc {
+  width: 100%;
+  padding: 14px;
+  font-size: 0.68rem;
+  text-align: center;
+}
+
+.product-divider {
+  border: none;
+  border-top: var(--line-soft);
+  margin: 32px 0;
+}
+
+.product-description {
+  font-size: 0.95rem;
+  color: var(--charcoal-soft);
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* Shop card link wrappers */
+.art-card-image-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.art-card-title-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.art-card-title-link:hover .art-card-title {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  .product-image-wrap,
+  .product-image-wrap img { max-height: 260px; }
+  .product-title { font-size: 1.5rem; }
+}
+
+/* =====================
    Gallery — image-only cards
    ===================== */
 .gallery-grid {

@@ -1,0 +1,93 @@
+<h2>Product Detail Page — Layout</h2>
+<p class="subtitle">Which layout feels right for the shop's product pages?</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#f4efe3;padding:16px;">
+      <div style="display:grid;grid-template-columns:55% 45%;height:220px;gap:0;border:1px solid rgba(0,0,0,0.1);">
+        <div style="background:#e8e0d0;display:flex;align-items:center;justify-content:center;font-size:0.65rem;color:#888;letter-spacing:.05em;">ARTWORK</div>
+        <div style="padding:16px 14px;display:flex;flex-direction:column;gap:8px;background:#faf7f2;">
+          <div style="height:6px;width:40%;background:#ccc;border-radius:2px;"></div>
+          <div style="height:14px;width:80%;background:#aaa;border-radius:2px;margin-top:4px;"></div>
+          <div style="height:10px;width:50%;background:#bbb;border-radius:2px;"></div>
+          <div style="display:flex;gap:4px;margin-top:4px;">
+            <div style="height:20px;width:32px;background:#ddd;border-radius:2px;border:1px solid #bbb;"></div>
+            <div style="height:20px;width:32px;background:#ddd;border-radius:2px;border:1px solid #bbb;"></div>
+            <div style="height:20px;width:32px;background:#555;border-radius:2px;"></div>
+          </div>
+          <div style="height:28px;background:#2a2927;border-radius:2px;margin-top:8px;"></div>
+          <div style="height:6px;width:90%;background:#e0e0e0;border-radius:2px;margin-top:8px;"></div>
+          <div style="height:6px;width:75%;background:#e0e0e0;border-radius:2px;"></div>
+          <div style="height:6px;width:85%;background:#e0e0e0;border-radius:2px;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Split Panel</h3>
+      <p>Large artwork fills the left half. Title, price, variants, and Add to Cart on the right. Image stays fixed while details scroll. Matches the feel of the existing Design page.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#f4efe3;padding:16px;">
+      <div style="height:220px;border:1px solid rgba(0,0,0,0.1);background:#faf7f2;display:flex;flex-direction:column;">
+        <div style="background:#e8e0d0;height:110px;display:flex;align-items:center;justify-content:center;font-size:0.65rem;color:#888;letter-spacing:.05em;">ARTWORK — FULL WIDTH</div>
+        <div style="padding:12px 16px;display:flex;gap:24px;flex:1;">
+          <div style="flex:1;display:flex;flex-direction:column;gap:6px;">
+            <div style="height:12px;width:70%;background:#aaa;border-radius:2px;"></div>
+            <div style="height:8px;width:40%;background:#bbb;border-radius:2px;"></div>
+          </div>
+          <div style="display:flex;gap:6px;align-items:flex-start;">
+            <div style="height:28px;width:80px;background:#2a2927;border-radius:2px;margin-top:2px;"></div>
+          </div>
+        </div>
+        <div style="padding:0 16px 10px;display:flex;gap:6px;">
+          <div style="height:18px;width:36px;background:#ddd;border-radius:2px;border:1px solid #bbb;"></div>
+          <div style="height:18px;width:36px;background:#ddd;border-radius:2px;border:1px solid #bbb;"></div>
+          <div style="height:18px;width:36px;background:#555;border-radius:2px;"></div>
+          <div style="height:18px;width:36px;background:#ddd;border-radius:2px;border:1px solid #bbb;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Stacked / Mobile-first</h3>
+      <p>Image spans the full width at top, content below in a single column. Works well on mobile first. Simpler layout, less dramatic on desktop.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#f4efe3;padding:16px;">
+      <div style="display:grid;grid-template-columns:50% 50%;height:220px;gap:0;border:1px solid rgba(0,0,0,0.1);">
+        <div style="display:flex;flex-direction:column;">
+          <div style="background:#e0d8c8;flex:1;display:flex;align-items:center;justify-content:center;font-size:0.65rem;color:#888;letter-spacing:.05em;">MAIN IMG</div>
+          <div style="display:flex;gap:2px;padding:4px;background:#ece8e0;">
+            <div style="height:28px;flex:1;background:#d4cec4;"></div>
+            <div style="height:28px;flex:1;background:#bfbab0;border:1px solid #888;"></div>
+            <div style="height:28px;flex:1;background:#d4cec4;"></div>
+          </div>
+        </div>
+        <div style="padding:14px 14px;display:flex;flex-direction:column;gap:7px;background:#faf7f2;">
+          <div style="height:5px;width:35%;background:#ccc;border-radius:2px;"></div>
+          <div style="height:13px;width:85%;background:#aaa;border-radius:2px;"></div>
+          <div style="height:9px;width:45%;background:#bbb;border-radius:2px;"></div>
+          <div style="height:5px;width:30%;background:#ccc;border-radius:2px;margin-top:4px;"></div>
+          <div style="display:flex;gap:4px;">
+            <div style="height:20px;width:28px;background:#ddd;border-radius:2px;border:1px solid #bbb;"></div>
+            <div style="height:20px;width:28px;background:#555;border-radius:2px;"></div>
+            <div style="height:20px;width:28px;background:#ddd;border-radius:2px;border:1px solid #bbb;"></div>
+          </div>
+          <div style="height:26px;background:#2a2927;border-radius:2px;margin-top:6px;"></div>
+          <div style="height:1px;background:#ddd;margin-top:4px;"></div>
+          <div style="height:5px;width:90%;background:#e8e8e8;border-radius:2px;"></div>
+          <div style="height:5px;width:70%;background:#e8e8e8;border-radius:2px;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Gallery + Detail</h3>
+      <p>Like A but with thumbnail strip below the main image for multi-image products. Best for Shopify products that have several photos. Slightly more complex to build.</p>
+    </div>
+  </div>
+
+</div>

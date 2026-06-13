@@ -1,24 +1,24 @@
 import { useState, useEffect } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams, Link } from 'react-router-dom'
 import { getProducts, isConfigured } from '../lib/shopify'
 import { useCart } from '../context/CartContext'
 import ArtPlaceholder from '../components/ArtPlaceholder'
 
 /* ── Static fallback (shown until Shopify is connected) ──── */
 const STATIC_PRINTS = [
-  { id: 's1', title: 'Bell Flower Study I',   meta: '8 × 10 in · Archival print', price: '$45', placeholderIndex: 0 },
-  { id: 's2', title: 'Fern — Pressed Series', meta: '8 × 10 in · Archival print', price: '$52', placeholderIndex: 1 },
-  { id: 's3', title: 'Waning Moon',           meta: '10 × 12 in · Archival print', price: '$55', placeholderIndex: 3 },
-  { id: 's4', title: 'Seed Pods I',           meta: '8 × 10 in · Archival print', price: '$50', placeholderIndex: 5 },
-  { id: 's5', title: 'Wreath Study',          meta: '10 × 10 in · Archival print', price: '$42', placeholderIndex: 4 },
-  { id: 's6', title: 'Bell Flower Study II',  meta: '5 × 7 in · Archival print',  price: '$28', placeholderIndex: 0 },
+  { id: 's1', handle: 'bell-flower-study-i',  title: 'Bell Flower Study I',   meta: '8 × 10 in · Archival print', price: '$45', placeholderIndex: 0 },
+  { id: 's2', handle: 'fern-pressed-series',  title: 'Fern — Pressed Series', meta: '8 × 10 in · Archival print', price: '$52', placeholderIndex: 1 },
+  { id: 's3', handle: 'waning-moon',          title: 'Waning Moon',           meta: '10 × 12 in · Archival print', price: '$55', placeholderIndex: 3 },
+  { id: 's4', handle: 'seed-pods-i',          title: 'Seed Pods I',           meta: '8 × 10 in · Archival print', price: '$50', placeholderIndex: 5 },
+  { id: 's5', handle: 'wreath-study',         title: 'Wreath Study',          meta: '10 × 10 in · Archival print', price: '$42', placeholderIndex: 4 },
+  { id: 's6', handle: 'bell-flower-study-ii', title: 'Bell Flower Study II',  meta: '5 × 7 in · Archival print',  price: '$28', placeholderIndex: 0 },
 ]
 
 const STATIC_APPAREL = [
-  { id: 'a1', title: 'Wreath Tee',       meta: 'Unisex · Bone',       price: '$38', placeholderIndex: 4 },
-  { id: 'a2', title: 'Bell Flower Tee',  meta: 'Unisex · Sage',       price: '$38', placeholderIndex: 0 },
-  { id: 'a3', title: 'Forest Floor Tee', meta: 'Unisex · Off-white',  price: '$38', placeholderIndex: 2 },
-  { id: 'a4', title: 'Moon Tee',         meta: 'Unisex · Charcoal',   price: '$40', placeholderIndex: 3 },
+  { id: 'a1', handle: 'wreath-tee',       title: 'Wreath Tee',       meta: 'Unisex · Bone',       price: '$38', placeholderIndex: 4 },
+  { id: 'a2', handle: 'bell-flower-tee',  title: 'Bell Flower Tee',  meta: 'Unisex · Sage',       price: '$38', placeholderIndex: 0 },
+  { id: 'a3', handle: 'forest-floor-tee', title: 'Forest Floor Tee', meta: 'Unisex · Off-white',  price: '$38', placeholderIndex: 2 },
+  { id: 'a4', handle: 'moon-tee',         title: 'Moon Tee',         meta: 'Unisex · Charcoal',   price: '$40', placeholderIndex: 3 },
 ]
 
 /* ── Normalize Shopify product → common card shape ────────── */
@@ -31,6 +31,7 @@ function normalize(product, idx) {
 
   return {
     id:              product.id,
+    handle:          product.handle,
     title:           product.title,
     price:           fmt.format(price),
     meta:            product.productType || '',
@@ -73,15 +74,19 @@ function ProductCard({ product }) {
 
   return (
     <article className="art-card">
-      <div className="art-card-image">
-        {product.imageUrl
-          ? <img src={product.imageUrl} alt={product.imageAlt} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-          : <ArtPlaceholder index={product.placeholderIndex} />
-        }
-      </div>
+      <Link to={`/product/${product.handle}`} className="art-card-image-link">
+        <div className="art-card-image">
+          {product.imageUrl
+            ? <img src={product.imageUrl} alt={product.imageAlt} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            : <ArtPlaceholder index={product.placeholderIndex} />
+          }
+        </div>
+      </Link>
 
       <div className="art-card-info">
-        <span className="art-card-title">{product.title}</span>
+        <Link to={`/product/${product.handle}`} className="art-card-title-link">
+          <span className="art-card-title">{product.title}</span>
+        </Link>
         {product.meta && <span className="art-card-meta">{product.meta}</span>}
 
         {hasVariants && (

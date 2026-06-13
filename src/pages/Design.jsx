@@ -93,7 +93,7 @@ function StaticProductOption({ product }) {
 export default function Design() {
   const { slug } = useParams()
   const [collection, setCollection] = useState(null)
-  const [loading, setLoading]       = useState(false)
+  const [loading, setLoading]       = useState(isConfigured)
 
   const staticDesign = getDesign(slug)
 

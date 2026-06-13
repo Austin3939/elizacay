@@ -10,6 +10,7 @@ import Shop from './pages/Shop'
 import Commission from './pages/Commission'
 import About from './pages/About'
 import Design from './pages/Design'
+import LanternTest from './pages/LanternTest'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -31,6 +32,7 @@ export default function App() {
           <Route path="/commission" element={<Commission />} />
           <Route path="/about" element={<About />} />
           <Route path="/design/:slug" element={<Design />} />
+          <Route path="/lantern-test" element={<LanternTest />} />
         </Routes>
       </main>
       <Footer />

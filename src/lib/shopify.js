@@ -151,9 +151,12 @@ export async function cartLinesAdd(cartId, variantId, quantity = 1) {
     mutation CartLinesAdd($cartId: ID!, $lines: [CartLineInput!]!) {
       cartLinesAdd(cartId: $cartId, lines: $lines) {
         cart { ${CART_FIELDS} }
+        userErrors { field message }
       }
     }
   `, { cartId, lines: [{ merchandiseId: variantId, quantity }] })
+  if (data.cartLinesAdd.userErrors.length)
+    throw new Error(data.cartLinesAdd.userErrors[0].message)
   return data.cartLinesAdd.cart
 }
 
@@ -162,9 +165,12 @@ export async function cartLinesUpdate(cartId, lineId, quantity) {
     mutation CartLinesUpdate($cartId: ID!, $lines: [CartLineUpdateInput!]!) {
       cartLinesUpdate(cartId: $cartId, lines: $lines) {
         cart { ${CART_FIELDS} }
+        userErrors { field message }
       }
     }
   `, { cartId, lines: [{ id: lineId, quantity }] })
+  if (data.cartLinesUpdate.userErrors.length)
+    throw new Error(data.cartLinesUpdate.userErrors[0].message)
   return data.cartLinesUpdate.cart
 }
 
@@ -173,9 +179,12 @@ export async function cartLinesRemove(cartId, lineIds) {
     mutation CartLinesRemove($cartId: ID!, $lineIds: [ID!]!) {
       cartLinesRemove(cartId: $cartId, lineIds: $lineIds) {
         cart { ${CART_FIELDS} }
+        userErrors { field message }
       }
     }
   `, { cartId, lineIds })
+  if (data.cartLinesRemove.userErrors.length)
+    throw new Error(data.cartLinesRemove.userErrors[0].message)
   return data.cartLinesRemove.cart
 }
 

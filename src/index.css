@@ -1804,3 +1804,22 @@ main { position: relative; z-index: 1; }
     gap: 48px;
   }
 }
+
+/* =====================
+   Commission — Subscribers Note
+   ===================== */
+.commission-subscribers-note {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  color: var(--charcoal-soft);
+  border-left: 2px solid var(--olive);
+  padding-left: 14px;
+  line-height: 1.7;
+}
+.commission-subscribers-note a {
+  color: var(--olive-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.commission-subscribers-note a:hover { color: var(--charcoal); }

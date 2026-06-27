@@ -42,6 +42,7 @@ export default function Product() {
 
   useEffect(() => {
     if (!isConfigured) return
+    setLiveProduct(null)
     setLoading(true)
     getProduct(handle)
       .then(setLiveProduct)

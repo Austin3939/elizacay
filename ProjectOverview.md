@@ -1,12 +1,12 @@
 # Eliza Cay — Site Overview & Audience-Building Guide
 
-This document is written for **Eliza** — the artist. It explains what this site is, how each page works, what content you need to provide, and most importantly, how to use the site as a tool to build a real, lasting audience for your work.
+This document explain what this site is, how each page works, what content you need to provide, and most importantly, how to use the site as a tool to build a real, lasting audience for your work.
 
 ---
 
 ## What This Site Is
 
-Your site at **elizacay.com** does three things:
+Your site at does three things:
 
 1. **Showcases your work** — the gallery and shop give people a place to browse and buy
 2. **Books commission work** — the commission page handles enquiries end to end
@@ -37,8 +37,11 @@ TikTok / Instagram / Pinterest
 Each platform has a specific job:
 
 - **TikTok** — your fastest path to new eyes. Process videos, speedpaints, and timelapse reach people who have never heard of you. The algorithm actively pushes your content to cold audiences if you post consistently. This is your top-of-funnel engine.
+
 - **Instagram** — your portfolio layer. People who discover you on TikTok come here to browse your aesthetic and decide if they like your work. Link your site in bio. Your grid should look like your brand.
+
 - **Pinterest** — long-tail discovery. Botanical and illustrative art does exceptionally well on Pinterest. A single well-titled pin can drive traffic to your site for 18 months or longer. Pin every journal post and every product.
+
 - **Your Email List** — the only audience you truly own. Followers disappear if a platform changes its algorithm or shuts down. Your email list is yours forever. Every page on this site is designed to nudge people toward subscribing.
 
 ### The Content Engine: One Piece, Four Places
@@ -60,7 +63,7 @@ The **Process Journal** (see below) is your content home base. The rhythm that m
 
 ### Why This Works
 
-You're not chasing the algorithm. You're using social to fill the top of a funnel that you control. Someone finds a TikTok, comes to your site, signs up for the list. Now you can reach them directly, forever, regardless of what any platform does next.
+You're not chasing the algorithm. You're using social to fill the top of a funnel that you control. Someone finds a Instagram post, comes to your site, signs up for the list. Now you can reach them directly, forever, regardless of what any platform does next.
 
 **The flywheel is the most important feature on this site.** Every decision about what to post, what to build next, and how to spend your time should come back to this question: does it drive discovery, convert visitors, or retain subscribers?
 
@@ -129,7 +132,7 @@ The shop sells your prints and apparel, organised into two tabs. It connects dir
 - [ ] Add your products to Shopify with Product Type set to `Print` or `Apparel`
 - [ ] Decide whether your prints are open edition or limited edition — and if limited, what the edition size is
 
-> **Open question for Eliza:** Are your prints open edition (anyone can order anytime) or limited edition (e.g. 25 or 50 prints, then retired)? Limited editions tend to sell better and create urgency, but open editions are simpler to manage. What feels right for your business?
+> **Open question** Are your prints open edition (anyone can order anytime) or limited edition (e.g. 25 or 50 prints, then retired)? Limited editions tend to sell better and create urgency, but open editions are simpler to manage. What feels right for your business?
 
 ---
 
@@ -152,7 +155,7 @@ The form currently needs to be connected to an email service so enquiries actual
 - [ ] Set up a free Formspree account at formspree.io and share the form endpoint with your developer
 - [ ] Decide: when do commission slots open, and how many do you take at a time?
 
-> **Open question for Eliza:** Do you want commission slots to be open year-round with a waitlist, or open on a fixed quarterly schedule? The quarterly approach (open four times a year, subscribers hear first) creates more excitement and urgency — but requires clear communication about when slots are open and closed. Which fits how you want to work?
+> **Open question** Do you want commission slots to be open year-round with a waitlist, or open on a fixed quarterly schedule? The quarterly approach (open four times a year, subscribers hear first) creates more excitement and urgency — but requires clear communication about when slots are open and closed. Which fits how you want to work?
 
 ---
 
@@ -181,7 +184,7 @@ The About page is a high-intent page — people who read it all the way through 
 - [ ] Three values or beliefs for the Philosophy cards (e.g. "Slow work", "Made by hand", "Nature as teacher" — whatever is genuinely true for you)
 - [ ] Your real Instagram, TikTok, and Pinterest handles
 
-> **Open question for Eliza:** What do you want people to feel after reading your About page — inspired? Like they've met a real person? Confident they're buying from someone who cares about craft? Knowing this will help you write copy that hits the right note.
+> **Open question** What do you want people to feel after reading your About page — inspired? Like they've met a real person? Confident they're buying from someone who cares about craft? Knowing this will help you write copy that hits the right note.
 
 ---
 
@@ -212,7 +215,7 @@ If you ever don't know what to post, use this template:
 
 That's a complete journal post. Three sentences is enough.
 
-> **Open question for Eliza:** Would a simple fill-in-the-blank post template help you stay consistent, or do you prefer free-form? We can bake a template into the posting interface so you never stare at a blank page.
+> **Open question** Would a simple fill-in-the-blank post template help you stay consistent, or do you prefer free-form? We can bake a template into the posting interface so you never stare at a blank page.
 
 ---
 
@@ -230,7 +233,7 @@ You'll need an email marketing platform. Recommended options:
 
 Once you've chosen a platform, your developer can connect the subscribe form on the site so every sign-up flows in automatically.
 
-> **Open question for Eliza:** Which email platform would you like to use? If you're unsure, start with Mailchimp — easiest to get going, free until you grow.
+> **Open question** Which email platform would you like to use? If you're unsure, start with Mailchimp — easiest to get going, free until you grow.
 
 ### What to Send
 
@@ -257,10 +260,10 @@ This works because it's specific. "First access" means something real — a subs
 
 ### Handles Needed
 
-> **Open question for Eliza:** Please fill in your handles so they can be added to the site footer, About page, and nav:
-> - Instagram: `@___________`
-> - TikTok: `@___________`
-> - Pinterest: `___________`
+> **Open question** Please fill in your handles so they can be added to the site footer, About page, and nav:
+> - Instagram: @
+> - TikTok: @
+> - Pinterest: 
 
 ### What to Post Where
 
@@ -277,7 +280,7 @@ This works because it's specific. "First access" means something real — a subs
 - **Use on-screen text.** Many viewers watch on mute. Text like *"drawing botanicals with a 0.05mm pen"* tells people exactly what they're watching without needing sound.
 - **Don't wait until it's perfect.** Post consistently from day one. Early videos don't need to be good — they teach you what resonates.
 
-### Pinterest Tips for Botanical Illustrators
+### Pinterest Tips for Illustrators
 
 - **Titles matter more than captions.** Write titles like: *"Botanical ink illustration — Bell Flower Study print"* not just *"Bell Flower."*
 - **Link every pin back to your site** — to the journal post, the product page, or the gallery. Pinterest is a traffic machine if you link correctly and a dead end if you don't.
@@ -335,4 +338,3 @@ These are decisions that need your input before we can finalise or build certain
 
 ---
 
-*Sections marked `[ ]` are action items or open questions waiting on input from Eliza. This document will be updated as decisions are made.*

@@ -104,10 +104,6 @@ export default function Home() {
             <Link to="/shop" className="btn btn-light">Shop Prints</Link>
             <Link to="/commission" className="btn btn-light">Commission Work</Link>
           </div>
-          <div className="hero-newsletter">
-            <p className="hero-newsletter-label">Join the list for first access</p>
-            <NewsletterSignup variant="compact" />
-          </div>
           <div className="hero-social">
             <SocialLinks variant="light" />
           </div>

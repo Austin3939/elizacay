@@ -419,20 +419,8 @@ main { position: relative; z-index: 1; }
   margin-top: 8px;
 }
 
-.hero-newsletter {
-  margin-top: 28px;
-  max-width: 360px;
-}
-.hero-newsletter-label {
-  font-family: var(--font-mono);
-  font-size: 0.55rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: rgba(244,239,227,0.45);
-  margin-bottom: 10px;
-}
 .hero-social {
-  margin-top: 24px;
+  margin-top: 32px;
   opacity: 0.7;
 }
 
@@ -1306,6 +1294,40 @@ main { position: relative; z-index: 1; }
   transition: opacity 0.2s;
 }
 .nav-cart-btn:hover { opacity: 0.55; }
+
+.nav-subscribe {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  border: 1px solid var(--charcoal);
+  padding: 8px 18px;
+  transition: background 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+}
+.nav-subscribe:hover {
+  background: var(--charcoal);
+  color: var(--cream);
+}
+@media (max-width: 768px) {
+  .nav-subscribe { display: none; }
+}
+
+.nav-mobile-subscribe {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--cream);
+  border: 1px solid rgba(244,239,227,0.4);
+  padding: 12px 24px;
+  text-align: center;
+  margin-top: 8px;
+  transition: background 0.2s ease;
+}
+.nav-mobile-subscribe:hover { background: rgba(244,239,227,0.08); }
 
 .nav-cart-badge {
   position: absolute;

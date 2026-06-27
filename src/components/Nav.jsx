@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
 
 export default function Nav() {
@@ -29,6 +29,9 @@ export default function Nav() {
         </ul>
 
         <div className="nav-right">
+          <Link to="/#newsletter" className="nav-subscribe">
+            Join the List
+          </Link>
           <button
             className="nav-cart-btn"
             onClick={openCart}
@@ -61,6 +64,9 @@ export default function Nav() {
             {label}
           </NavLink>
         ))}
+        <Link to="/#newsletter" className="nav-mobile-subscribe" onClick={close}>
+          Join the List
+        </Link>
       </div>
     </>
   )

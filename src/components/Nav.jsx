@@ -81,6 +81,7 @@ function CartIcon() {
 
 const LINKS = [
   { to: '/gallery',    label: 'Gallery'    },
+  { to: '/journal',    label: 'Journal'    },
   { to: '/shop',       label: 'Shop'       },
   { to: '/commission', label: 'Commission' },
   { to: '/about',      label: 'About'      },

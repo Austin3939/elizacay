@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import ArtPlaceholder from '../components/ArtPlaceholder'
+import SocialLinks from '../components/SocialLinks'
 
 export default function About() {
   return (
@@ -112,6 +113,31 @@ export default function About() {
               </p>
             </div>
 
+          </div>
+        </div>
+      </section>
+
+      {/* ── Follow ────────────────────────────────────────── */}
+      <section className="about-follow">
+        <div className="container">
+          <div className="about-follow-inner">
+            <div>
+              <span className="tag">Follow Along</span>
+              <h2>Find the work in progress</h2>
+              <p>
+                Process videos and speedpaints on TikTok. The portfolio and studio
+                moments on Instagram. Prints and botanical illustrations on Pinterest.
+              </p>
+              <SocialLinks variant="dark" showLabels={true} />
+            </div>
+            <div className="about-follow-cta">
+              <span className="tag">The List</span>
+              <p>
+                Want first access to new prints and commission slots? Join the newsletter
+                for studio updates and early announcements.
+              </p>
+              <a href="/#newsletter" className="btn btn-dark">Join the List</a>
+            </div>
           </div>
         </div>
       </section>

@@ -54,6 +54,7 @@ const CART_FIELDS = `
 /* ── Shared product fields ───────────────────────────────── */
 const PRODUCT_FIELDS = `
   id
+  handle
   title
   description
   productType
@@ -195,4 +196,26 @@ export async function getCart(cartId) {
     }
   `, { cartId })
   return data.cart
+}
+
+export async function getProduct(handle) {
+  const data = await gql(`
+    query GetProduct($handle: String!) {
+      product(handle: $handle) {
+        id
+        handle
+        title
+        description
+        productType
+        priceRange { minVariantPrice { amount currencyCode } }
+        images(first: 10) { edges { node { url altText } } }
+        variants(first: 20) {
+          edges {
+            node { id title availableForSale price { amount currencyCode } }
+          }
+        }
+      }
+    }
+  `, { handle })
+  return data.product
 }

@@ -84,6 +84,10 @@ export default function Commission() {
                 aesthetic. I'm open to custom prints, apparel graphics, wedding
                 illustration, gift portraits, and more.
               </p>
+              <p className="commission-subscribers-note">
+                Subscribers to the list hear when slots open 48 hours before anyone else.{' '}
+                <a href="/#newsletter">Join the list →</a>
+              </p>
 
               <dl className="commission-details" style={{ marginTop: '32px' }}>
                 <dt>Typical turnaround</dt>

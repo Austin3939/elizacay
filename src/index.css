@@ -419,6 +419,11 @@ main { position: relative; z-index: 1; }
   margin-top: 8px;
 }
 
+.hero-social {
+  margin-top: 32px;
+  opacity: 0.7;
+}
+
 /* =====================
    Home — Featured Works
    ===================== */

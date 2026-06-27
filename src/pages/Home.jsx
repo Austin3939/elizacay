@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { getFeaturedProducts, isConfigured } from '../lib/shopify'
 import { useCart } from '../context/CartContext'
 import ArtPlaceholder from '../components/ArtPlaceholder'
+import SocialLinks from '../components/SocialLinks'
+import NewsletterSignup from '../components/NewsletterSignup'
 
 const STATIC_FEATURED = [
   { index: 0, title: 'Bell Flower Study',  medium: 'Digital illustration', price: '$45' },
@@ -102,6 +104,9 @@ export default function Home() {
             <Link to="/shop" className="btn btn-light">Shop Prints</Link>
             <Link to="/commission" className="btn btn-light">Commission Work</Link>
           </div>
+          <div className="hero-social">
+            <SocialLinks variant="light" />
+          </div>
         </div>
       </section>
 
@@ -171,6 +176,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ── Newsletter ────────────────────────────────────── */}
+      <NewsletterSignup variant="section" />
     </>
   )
 }

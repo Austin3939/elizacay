@@ -1653,3 +1653,28 @@ main { position: relative; z-index: 1; }
   .page-header { padding: 48px 0 36px; }
   .page-header h1 { font-size: 1.6rem; }
 }
+
+/* =====================
+   Social Links
+   ===================== */
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+.social-link:hover { opacity: 1; }
+.social-links--dark  .social-link { color: var(--charcoal); }
+.social-links--light .social-link { color: var(--cream); }
+.social-link-label {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}

@@ -419,8 +419,20 @@ main { position: relative; z-index: 1; }
   margin-top: 8px;
 }
 
+.hero-newsletter {
+  margin-top: 28px;
+  max-width: 360px;
+}
+.hero-newsletter-label {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(244,239,227,0.45);
+  margin-bottom: 10px;
+}
 .hero-social {
-  margin-top: 32px;
+  margin-top: 24px;
   opacity: 0.7;
 }
 

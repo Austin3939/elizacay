@@ -24,13 +24,11 @@ export default function About() {
             </div>
 
             <div className="about-photo-frame">
-              <div className="about-photo-placeholder">
-                <img
-                  src="/images/botanical.png"
-                  alt=""
-                  style={{ height: 72, opacity: 0.4 }}
-                />
-              </div>
+              <img
+                src="/images/artist-photo.jpg"
+                alt="Liz, the artist behind eliza cay"
+                className="about-photo"
+              />
             </div>
           </div>
         </div>

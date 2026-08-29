@@ -18,7 +18,6 @@ export default function Footer() {
             <h4>Navigate</h4>
             <ul className="footer-links">
               <li><Link to="/gallery">Gallery</Link></li>
-              <li><Link to="/journal">Journal</Link></li>
               <li><Link to="/shop">Shop</Link></li>
               <li><Link to="/commission">Commission Work</Link></li>
               <li><Link to="/about">About</Link></li>

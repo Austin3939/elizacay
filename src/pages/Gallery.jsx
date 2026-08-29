@@ -1,18 +1,22 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { getCollections, isConfigured } from '../lib/shopify'
-import { DESIGNS } from '../data/designs'
 import ArtPlaceholder from '../components/ArtPlaceholder'
 
 export default function Gallery() {
   const [collections, setCollections] = useState([])
+  const [fetching, setFetching] = useState(isConfigured)
 
   useEffect(() => {
     if (!isConfigured) return
-    getCollections(20).then(setCollections).catch(console.error)
+    setFetching(true)
+    getCollections(20)
+      .then(setCollections)
+      .catch(console.error)
+      .finally(() => setFetching(false))
   }, [])
 
-  const showLive = isConfigured && collections.length > 0
+  const hasAny = collections.length > 0
 
   return (
     <>
@@ -20,31 +24,37 @@ export default function Gallery() {
         <div className="container">
           <span className="tag">Eliza Cay</span>
           <h1>Gallery</h1>
-          <p>
-            Click any piece to see what it's available on.
-          </p>
+          <p>Original designs — available as prints and on apparel.</p>
         </div>
       </div>
 
       <div className="container">
         <section className="gallery-section">
-          <div className="gallery-grid">
-            {showLive
-              ? collections.map(col => (
-                  <Link key={col.id} to={`/design/${col.handle}`} className="gallery-card">
-                    {col.image
-                      ? <img src={col.image.url} alt={col.image.altText || col.title} />
-                      : <div className="gallery-card-placeholder"><ArtPlaceholder index={0} /></div>
-                    }
-                  </Link>
-                ))
-              : DESIGNS.map(d => (
-                  <Link key={d.slug} to={`/design/${d.slug}`} className="gallery-card">
-                    <ArtPlaceholder index={d.placeholderIndex} />
-                  </Link>
-                ))
-            }
-          </div>
+          {fetching ? (
+            <div className="shop-loading">Loading the gallery…</div>
+          ) : !hasAny ? (
+            <div className="coming-soon">
+              <img src="/images/botanical.png" alt="" className="coming-soon-mark" />
+              <p className="coming-soon-title">The catalogue is coming together.</p>
+              <p className="coming-soon-body">
+                Finished work is being photographed and written up. Come back
+                soon to see the pieces — or follow along on Instagram in the
+                meantime.
+              </p>
+              <Link to="/about" className="btn btn-dark">More About the Work</Link>
+            </div>
+          ) : (
+            <div className="gallery-grid">
+              {collections.map(col => (
+                <Link key={col.id} to={`/design/${col.handle}`} className="gallery-card">
+                  {col.image
+                    ? <img src={col.image.url} alt={col.image.altText || col.title} />
+                    : <div className="gallery-card-placeholder"><ArtPlaceholder /></div>
+                  }
+                </Link>
+              ))}
+            </div>
+          )}
         </section>
       </div>
     </>

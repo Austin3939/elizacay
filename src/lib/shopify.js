@@ -109,12 +109,15 @@ export async function getCollections(first = 20) {
             title
             handle
             image { url altText }
+            products(first: 1) { edges { node { id } } }
           }
         }
       }
     }
   `, { first })
-  return data.collections.edges.map(e => e.node)
+  return data.collections.edges
+    .map(e => e.node)
+    .filter(c => c.products.edges.length > 0)
 }
 
 export async function getCollectionProducts(handle) {

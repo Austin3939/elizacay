@@ -1,26 +1,25 @@
 import { useState } from 'react'
-import ArtPlaceholder from '../components/ArtPlaceholder'
 
 const PROCESS = [
   {
     num: '01',
     title: 'Enquire',
-    body: 'Fill in the commission form with your idea, budget, and timeline. I\'ll respond within 3–5 business days.',
+    body: "Fill in the form with your idea, budget, and timeline. I'll get back to you within a few days.",
   },
   {
     num: '02',
     title: 'Concept',
-    body: 'We discuss your vision. I\'ll share initial sketches or mood references to align on direction before starting.',
+    body: "We talk through your vision. I share initial sketches or references so we're aligned on direction before I start.",
   },
   {
     num: '03',
     title: 'Create',
-    body: 'Once the concept is approved and a deposit received, I begin work and share progress updates along the way.',
+    body: 'Once the concept is approved and a deposit secures your slot, I begin the work and share progress along the way.',
   },
   {
     num: '04',
     title: 'Deliver',
-    body: 'Final files or a shipped original are delivered. Prints can be arranged directly or added to the shop.',
+    body: 'Final print-ready files, or a shipped original. Prints can be arranged directly or added to the shop.',
   },
 ]
 
@@ -34,7 +33,6 @@ export default function Commission() {
 
   const submit = e => {
     e.preventDefault()
-    /* Wire to Formspree, EmailJS, or your backend here */
     setSent(true)
   }
 
@@ -44,9 +42,10 @@ export default function Commission() {
       <section className="commission-hero">
         <div className="container">
           <span className="tag tag-light">Commission Work</span>
-          <h1>Something made<br />just for you.</h1>
+          <h1>Wander and wonder.</h1>
           <p>
-            Tag line - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            What can we create together? Commissions are open for illustration,
+            block prints, and custom work made entirely for you.
           </p>
         </div>
       </section>
@@ -76,28 +75,29 @@ export default function Commission() {
               <span className="tag">Before You Enquire</span>
               <h2>What to expect</h2>
               <p>
-                Commission slots are limited — I take on a small number of projects
-                at a time to give each piece the attention it deserves.
+                I take on a small number of commissions at a time so each piece
+                gets the attention it deserves.
               </p>
               <p>
-                I work primarily in digital illustration with a hand-drawn, thin-line
-                aesthetic. I'm open to custom prints, apparel graphics, wedding
-                illustration, gift portraits, and more.
+                I work in block printing and illustration, with a hand-drawn,
+                folk-influenced style — high contrast, soft texture, traditional
+                patterns and modern doodles. I'm open to custom prints, apparel
+                graphics, gift pieces, event illustration, and more.
               </p>
               <p className="commission-subscribers-note">
-                Subscribers to the list hear when slots open 48 hours before anyone else.{' '}
+                Subscribers to the list hear when commission slots open first.{' '}
                 <a href="/#newsletter">Join the list →</a>
               </p>
 
               <dl className="commission-details" style={{ marginTop: '32px' }}>
-                <dt>Typical turnaround</dt>
-                <dd>3–6 weeks depending on complexity</dd>
+                <dt>Turnaround</dt>
+                <dd>Agreed with you up front, based on the scope of the piece</dd>
                 <dt>Deposit</dt>
-                <dd>50% upfront, 50% on delivery</dd>
-                <dt>File formats</dt>
-                <dd>High-res PNG, PDF, or original file on request</dd>
+                <dd>A deposit secures your slot; the balance is due on completion</dd>
+                <dt>Files</dt>
+                <dd>Print-ready files, or a shipped original on request</dd>
                 <dt>Revisions</dt>
-                <dd>Two rounds of revisions included</dd>
+                <dd>Built into every project so we land it together</dd>
               </dl>
             </div>
 
@@ -108,7 +108,7 @@ export default function Commission() {
               {sent ? (
                 <div style={{ padding: '40px 0' }}>
                   <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', letterSpacing: '0.1em' }}>
-                    Thank you — I'll be in touch within 3–5 days.
+                    Thank you — your enquiry has been noted and I'll be in touch.
                   </p>
                 </div>
               ) : (
@@ -129,7 +129,8 @@ export default function Commission() {
                       <label htmlFor="type">Project Type</label>
                       <select id="type" name="type" required value={form.type} onChange={handle}>
                         <option value="">Select...</option>
-                        <option>Botanical illustration</option>
+                        <option>Illustration</option>
+                        <option>Block print</option>
                         <option>Portrait</option>
                         <option>Place / Architecture</option>
                         <option>Wedding / Event</option>

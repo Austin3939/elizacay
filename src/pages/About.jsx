@@ -12,24 +12,23 @@ export default function About() {
             <div>
               <span className="tag tag-light">The Artist</span>
               <h1>eliza cay</h1>
-              {/* ✏️ CLIENT: Replace this with a short bio intro — who you are, your style, where you're based */}
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                ad minim veniam, quis nostrud exercitation ullamco laboris.
+                My name is Liz and I am a queer visual artist based in Grand
+                Rapids, Michigan. As a multimedia artist, my focus is on block
+                printing and illustration, but I also have a special interest in
+                the textile world. I grew up with a love for myth, history, and
+                all things odd. I believe history is life's greatest teacher and
+                the Ego's greatest foe, and that contradiction gives birth to my
+                work.
               </p>
             </div>
 
             <div className="about-photo-frame">
-              <div className="about-photo-placeholder">
-                {/* ✏️ CLIENT: Replace this block with your photo:
-                    <img src="/images/artist-photo.jpg" alt="Eliza Cay" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> */}
-                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                  <circle cx="24" cy="18" r="10" stroke="rgba(244,239,227,0.5)" strokeWidth="1"/>
-                  <path d="M6 44 C6 32 42 32 42 44" stroke="rgba(244,239,227,0.5)" strokeWidth="1" fill="none"/>
-                </svg>
-                <span>Artist photo</span>
-              </div>
+              <img
+                src="/images/artist-photo.jpg"
+                alt="Liz, the artist behind eliza cay"
+                className="about-photo"
+              />
             </div>
           </div>
         </div>
@@ -44,23 +43,17 @@ export default function About() {
                 <h2>The Work</h2>
               </div>
 
-              {/* ✏️ CLIENT: Replace each paragraph below with your own words about your work and process */}
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat.
+                My work is an amalgamation of childlike joy and folk stories. I am
+                inspired by the unique relationship between history, nature, and
+                humanity, and via handmade journeys, I can give life to wonder and
+                personhood.
               </p>
               <p>
-                Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                cupidatat non proident, sunt in culpa qui officia deserunt mollit
-                anim id est laborum.
-              </p>
-              <p>
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque laudantium, totam rem aperiam eaque ipsa
-                quae ab illo inventore veritatis et quasi architecto beatae.
+                With high contrast and soft textures, traditional folk patterns
+                and modern doodles, I draw inspiration from daydreams and
+                fairytales, from fleeting glances and genuine connections — and
+                the end result is ridiculous, it's silly, and I love it.
               </p>
 
               <div style={{ marginTop: '36px' }}>
@@ -69,7 +62,7 @@ export default function About() {
             </div>
 
             <div className="about-botanical">
-              <ArtPlaceholder index={4} />
+              <ArtPlaceholder />
             </div>
           </div>
         </div>
@@ -82,38 +75,36 @@ export default function About() {
           <div className="about-philosophy-grid">
 
             <div className="philosophy-card">
-              {/* ✏️ CLIENT: Replace this heading with your first value or belief */}
-              <span className="philosophy-title">Your value here</span>
-              {/* ✏️ CLIENT: Describe this value in 1–2 sentences */}
+              <span className="philosophy-title">Organic in mind and in hand</span>
               <p className="philosophy-body">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                The work stays organic — in how it is thought through and in how
+                it is made by hand.
               </p>
             </div>
 
             <div className="philosophy-card">
-              {/* ✏️ CLIENT: Replace this heading with your second value or belief */}
-              <span className="philosophy-title">Your value here</span>
-              {/* ✏️ CLIENT: Describe this value in 1–2 sentences */}
+              <span className="philosophy-title">Nature, with care and wonder</span>
               <p className="philosophy-body">
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat duis aute irure.
+                Nature is to be treated with care and wonder — never taken for
+                granted.
               </p>
             </div>
 
             <div className="philosophy-card">
-              {/* ✏️ CLIENT: Replace this heading with your third value or belief */}
-              <span className="philosophy-title">
-                Your value here
-              </span>
-              {/* ✏️ CLIENT: Describe this value in 1–2 sentences */}
+              <span className="philosophy-title">History, revered and studied</span>
               <p className="philosophy-body">
-                Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur excepteur sint occaecat.
+                History and culture are meant to be revered and studied. History
+                is life's greatest teacher.
               </p>
             </div>
 
           </div>
+
+          <p className="philosophy-note">
+            A teacher told me once that something should never be cool just for
+            cool's sake. I vehemently disagree. Some things can just be fun, and
+            there is value in celebrating that.
+          </p>
         </div>
       </section>
 
@@ -125,16 +116,17 @@ export default function About() {
               <span className="tag">Follow Along</span>
               <h2>Find the work in progress</h2>
               <p>
-                Process videos and speedpaints on TikTok. The portfolio and studio
-                moments on Instagram. Prints and botanical illustrations on Pinterest.
+                Studio moments and finished pieces on Instagram, process and
+                works-in-progress on TikTok, and collected inspiration on
+                Pinterest — all at <strong>@elizacaystudio</strong>.
               </p>
               <SocialLinks variant="dark" showLabels={true} />
             </div>
             <div className="about-follow-cta">
               <span className="tag">The List</span>
               <p>
-                Want first access to new prints and commission slots? Join the newsletter
-                for studio updates and early announcements.
+                Want first access to new prints and commission slots? Join the
+                newsletter for studio updates and early announcements.
               </p>
               <a href="/#newsletter" className="btn btn-dark">Join the List</a>
             </div>

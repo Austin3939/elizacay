@@ -4,23 +4,6 @@ import { getProducts, isConfigured } from '../lib/shopify'
 import { useCart } from '../context/CartContext'
 import ArtPlaceholder from '../components/ArtPlaceholder'
 
-/* ── Static fallback (shown until Shopify is connected) ──── */
-const STATIC_PRINTS = [
-  { id: 's1', handle: 'bell-flower-study-i',  title: 'Bell Flower Study I',   meta: '8 × 10 in · Archival print', price: '$45', placeholderIndex: 0 },
-  { id: 's2', handle: 'fern-pressed-series',  title: 'Fern — Pressed Series', meta: '8 × 10 in · Archival print', price: '$52', placeholderIndex: 1 },
-  { id: 's3', handle: 'waning-moon',          title: 'Waning Moon',           meta: '10 × 12 in · Archival print', price: '$55', placeholderIndex: 3 },
-  { id: 's4', handle: 'seed-pods-i',          title: 'Seed Pods I',           meta: '8 × 10 in · Archival print', price: '$50', placeholderIndex: 5 },
-  { id: 's5', handle: 'wreath-study',         title: 'Wreath Study',          meta: '10 × 10 in · Archival print', price: '$42', placeholderIndex: 4 },
-  { id: 's6', handle: 'bell-flower-study-ii', title: 'Bell Flower Study II',  meta: '5 × 7 in · Archival print',  price: '$28', placeholderIndex: 0 },
-]
-
-const STATIC_APPAREL = [
-  { id: 'a1', handle: 'wreath-tee',       title: 'Wreath Tee',       meta: 'Unisex · Bone',       price: '$38', placeholderIndex: 4 },
-  { id: 'a2', handle: 'bell-flower-tee',  title: 'Bell Flower Tee',  meta: 'Unisex · Sage',       price: '$38', placeholderIndex: 0 },
-  { id: 'a3', handle: 'forest-floor-tee', title: 'Forest Floor Tee', meta: 'Unisex · Off-white',  price: '$38', placeholderIndex: 2 },
-  { id: 'a4', handle: 'moon-tee',         title: 'Moon Tee',         meta: 'Unisex · Charcoal',   price: '$40', placeholderIndex: 3 },
-]
-
 /* ── Normalize Shopify product → common card shape ────────── */
 function normalize(product, idx) {
   const variants  = product.variants.edges.map(e => e.node)
@@ -107,22 +90,33 @@ function ProductCard({ product }) {
       </div>
 
       <div className="art-card-actions">
-        {isConfigured ? (
-          <button
-            className="btn btn-dark"
-            style={{ fontSize: '0.58rem', padding: '9px 20px' }}
-            onClick={handleAdd}
-            disabled={adding || !selectedId}
-          >
-            {adding ? 'Adding…' : 'Add to Cart'}
-          </button>
-        ) : (
-          <span className="shop-unconfigured">
-            Connect Shopify to enable checkout
-          </span>
-        )}
+        <button
+          className="btn btn-dark"
+          style={{ fontSize: '0.58rem', padding: '9px 20px' }}
+          onClick={handleAdd}
+          disabled={adding || !selectedId}
+        >
+          {adding ? 'Adding…' : 'Add to Cart'}
+        </button>
       </div>
     </article>
+  )
+}
+
+/* ── Empty / coming-soon state ───────────────────────────── */
+function ShopComingSoon() {
+  return (
+    <section className="shop-section">
+      <div className="coming-soon">
+        <img src="/images/botanical.png" alt="" className="coming-soon-mark" />
+        <p className="coming-soon-title">The shop is being stocked.</p>
+        <p className="coming-soon-body">
+          New prints and apparel are on their way. Check back soon — or join the
+          list below and I'll let you know the moment they land.
+        </p>
+        <Link to="/#newsletter" className="btn btn-dark">Join the List</Link>
+      </div>
+    </section>
   )
 }
 
@@ -131,7 +125,7 @@ export default function Shop() {
   const [searchParams] = useSearchParams()
   const [tab, setTab]  = useState('prints')
   const [live, setLive]  = useState({ prints: [], apparel: [] })
-  const [fetching, setFetching] = useState(false)
+  const [fetching, setFetching] = useState(isConfigured)
 
   useEffect(() => {
     if (searchParams.get('tab') === 'apparel') setTab('apparel')
@@ -147,8 +141,8 @@ export default function Shop() {
       .finally(() => setFetching(false))
   }, [])
 
-  const prints  = isConfigured ? live.prints  : STATIC_PRINTS
-  const apparel = isConfigured ? live.apparel : STATIC_APPAREL
+  const { prints, apparel } = live
+  const hasAny = prints.length + apparel.length > 0
   const current = tab === 'prints' ? prints : apparel
 
   return (
@@ -158,45 +152,44 @@ export default function Shop() {
           <span className="tag">Eliza Cay</span>
           <h1>Shop</h1>
           <p>
-            Limited-edition fine art prints and original designs
-            on quality apparel — all shipped with care.
+            Limited-edition prints and original designs on quality apparel —
+            all shipped with care.
           </p>
-          {!isConfigured && (
-            <p className="shop-config-notice">
-              Add your Shopify credentials to <code>.env</code> to enable live
-              products and checkout.
-            </p>
-          )}
         </div>
       </div>
 
       <div className="container">
-        <div className="shop-tabs">
-          <button className={tab === 'prints'  ? 'active' : ''} onClick={() => setTab('prints')}>
-            Art Prints
-          </button>
-          <button className={tab === 'apparel' ? 'active' : ''} onClick={() => setTab('apparel')}>
-            Apparel
-          </button>
-        </div>
-
-        <section className="shop-section">
-          {fetching ? (
-            <div className="shop-loading">Loading products…</div>
-          ) : (
-            <div className="product-grid">
-              {current.map((p, i) => (
-                <ProductCard key={p.id} product={p} />
-              ))}
-              {current.length === 0 && isConfigured && (
-                <p className="shop-empty">
-                  No {tab} found. Make sure your Shopify products have a
-                  <strong> Product type</strong> set.
-                </p>
-              )}
+        {fetching ? (
+          <section className="shop-section">
+            <div className="shop-loading">Loading the shop…</div>
+          </section>
+        ) : !hasAny ? (
+          <ShopComingSoon />
+        ) : (
+          <>
+            <div className="shop-tabs">
+              <button className={tab === 'prints'  ? 'active' : ''} onClick={() => setTab('prints')}>
+                Art Prints
+              </button>
+              <button className={tab === 'apparel' ? 'active' : ''} onClick={() => setTab('apparel')}>
+                Apparel
+              </button>
             </div>
-          )}
-        </section>
+
+            <section className="shop-section">
+              <div className="product-grid">
+                {current.map(p => (
+                  <ProductCard key={p.id} product={p} />
+                ))}
+                {current.length === 0 && (
+                  <p className="shop-empty">
+                    Nothing in {tab === 'prints' ? 'prints' : 'apparel'} just yet — check back soon.
+                  </p>
+                )}
+              </div>
+            </section>
+          </>
+        )}
       </div>
     </>
   )

@@ -11,8 +11,6 @@ import Commission from './pages/Commission'
 import About from './pages/About'
 import Design from './pages/Design'
 import Product from './pages/Product'
-import Journal from './pages/Journal'
-import LanternTest from './pages/LanternTest'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -30,13 +28,11 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/gallery" element={<Gallery />} />
-          <Route path="/journal" element={<Journal />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/commission" element={<Commission />} />
           <Route path="/about" element={<About />} />
           <Route path="/design/:slug" element={<Design />} />
           <Route path="/product/:handle" element={<Product />} />
-          <Route path="/lantern-test" element={<LanternTest />} />
         </Routes>
       </main>
       <Footer />

@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { getCollectionProducts, isConfigured } from '../lib/shopify'
-import { getDesign } from '../data/designs'
 import { useCart } from '../context/CartContext'
 import ArtPlaceholder from '../components/ArtPlaceholder'
 
-/* ── Live product option (Shopify connected) ─────────────── */
-function LiveProductOption({ product }) {
+/* ── Live product option ─────────────────────────────────── */
+function ProductOption({ product }) {
   const { addToCart } = useCart()
   const variants = product.variants.edges.map(e => e.node)
   const available = variants.filter(v => v.availableForSale)
@@ -58,47 +57,14 @@ function LiveProductOption({ product }) {
   )
 }
 
-/* ── Static product option (fallback) ────────────────────── */
-function StaticProductOption({ product }) {
-  const [selected, setSelected] = useState(product.variants[0])
-
-  return (
-    <div className="design-product-option">
-      <span className="design-option-type">{product.type}</span>
-      <span className="design-option-name">{product.title}</span>
-
-      <div className="design-option-variants">
-        {product.variants.map(v => (
-          <button
-            key={v.id}
-            className={`variant-pill${selected?.id === v.id ? ' active' : ''}`}
-            onClick={() => setSelected(v)}
-          >
-            {v.label}
-          </button>
-        ))}
-      </div>
-
-      <div className="design-option-footer">
-        <span className="design-option-price">{selected?.price}</span>
-        <Link to="/shop" className="btn btn-dark">
-          View in Shop
-        </Link>
-      </div>
-    </div>
-  )
-}
-
 /* ── Page ─────────────────────────────────────────────────── */
 export default function Design() {
   const { slug } = useParams()
   const [collection, setCollection] = useState(null)
   const [loading, setLoading]       = useState(isConfigured)
 
-  const staticDesign = getDesign(slug)
-
   useEffect(() => {
-    if (!isConfigured) return
+    if (!isConfigured) { setLoading(false); return }
     setLoading(true)
     getCollectionProducts(slug)
       .then(setCollection)
@@ -106,15 +72,22 @@ export default function Design() {
       .finally(() => setLoading(false))
   }, [slug])
 
-  const liveProducts  = collection?.products?.edges?.map(e => e.node) ?? []
-  const designImage   = collection?.image
-  const designTitle   = collection?.title ?? staticDesign?.title ?? ''
-  const showLive      = isConfigured && liveProducts.length > 0
+  const products    = collection?.products?.edges?.map(e => e.node) ?? []
+  const designImage = collection?.image
+  const designTitle = collection?.title ?? ''
 
-  if (!staticDesign && !showLive && !loading) {
+  if (loading) {
     return (
       <div className="container" style={{ padding: '80px 0' }}>
-        <p>Design not found.</p>
+        <p className="design-loading">Loading…</p>
+      </div>
+    )
+  }
+
+  if (!collection || products.length === 0) {
+    return (
+      <div className="container" style={{ padding: '80px 0' }}>
+        <p>This design isn't available right now.</p>
         <Link to="/gallery" className="btn btn-dark" style={{ marginTop: 24 }}>Back to Gallery</Link>
       </div>
     )
@@ -128,27 +101,17 @@ export default function Design() {
         <div className="design-artwork">
           {designImage
             ? <img src={designImage.url} alt={designImage.altText || designTitle} />
-            : <ArtPlaceholder index={staticDesign?.placeholderIndex ?? 0} />
+            : <ArtPlaceholder />
           }
         </div>
 
         {/* Right — product options */}
         <div className="design-info">
-          <Link to="/gallery" className="design-back">
-            ← Gallery
-          </Link>
-
+          <Link to="/gallery" className="design-back">← Gallery</Link>
           <h1 className="design-title">{designTitle}</h1>
 
-          {loading && (
-            <p className="design-loading">Loading products…</p>
-          )}
-
           <div className="design-products">
-            {showLive
-              ? liveProducts.map(p => <LiveProductOption key={p.id} product={p} />)
-              : staticDesign?.products.map(p => <StaticProductOption key={p.id} product={p} />)
-            }
+            {products.map(p => <ProductOption key={p.id} product={p} />)}
           </div>
         </div>
 

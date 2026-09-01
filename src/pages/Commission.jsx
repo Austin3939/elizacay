@@ -24,26 +24,31 @@ const PROCESS = [
   },
 ]
 
+const CONTACT_EMAIL = 'hello@elizacaystudio.com'
+
 export default function Commission() {
   const [form, setForm] = useState({
     name: '', email: '', type: '', budget: '', timeline: '', description: '',
-    company: '', // honeypot — real users never see or fill this
   })
-  const [sent, setSent] = useState(false)
-  const [loadedAt] = useState(() => Date.now())
+  const [status, setStatus] = useState('idle') // idle | sending | sent | error
 
   const handle = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }))
 
-  const submit = e => {
+  // Netlify Forms: POST the encoded fields to any path with form-name set.
+  // Spam is handled server-side (bot-field honeypot + Akismet).
+  const submit = async e => {
     e.preventDefault()
-    // Bot filters: honeypot filled, or submitted implausibly fast.
-    // Show the success state either way so bots get no signal.
-    if (form.company || Date.now() - loadedAt < 3000) {
-      setSent(true)
-      return
+    setStatus('sending')
+    try {
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(e.target)).toString(),
+      })
+      setStatus(res.ok ? 'sent' : 'error')
+    } catch {
+      setStatus('error')
     }
-    // TODO: POST to the form endpoint once delivery is wired (see STATUS doc).
-    setSent(true)
   }
 
   return (
@@ -121,24 +126,28 @@ export default function Commission() {
             <div>
               <span className="tag">Enquiry Form</span>
 
-              {sent ? (
+              {status === 'sent' ? (
                 <div style={{ padding: '40px 0' }}>
                   <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', letterSpacing: '0.1em' }}>
-                    Thank you — your enquiry has been noted and I'll be in touch.
+                    Thank you — your enquiry has been received and I'll be in touch.
                   </p>
                 </div>
               ) : (
-                <form className="commission-form" onSubmit={submit}>
-                  <input
-                    type="text"
-                    name="company"
-                    className="hp-field"
-                    tabIndex={-1}
-                    autoComplete="off"
-                    aria-hidden="true"
-                    value={form.company}
-                    onChange={handle}
-                  />
+                <form
+                  className="commission-form"
+                  name="commission"
+                  method="POST"
+                  data-netlify="true"
+                  netlify-honeypot="bot-field"
+                  onSubmit={submit}
+                >
+                  <input type="hidden" name="form-name" value="commission" />
+                  <p className="hp-field">
+                    <label>
+                      Leave this field empty
+                      <input name="bot-field" tabIndex={-1} autoComplete="off" />
+                    </label>
+                  </p>
 
                   <div className="form-row">
                     <div className="form-group">
@@ -202,9 +211,21 @@ export default function Commission() {
                     />
                   </div>
 
-                  <button type="submit" className="btn btn-dark" style={{ alignSelf: 'flex-start' }}>
-                    Submit Enquiry
+                  <button
+                    type="submit"
+                    className="btn btn-dark"
+                    style={{ alignSelf: 'flex-start' }}
+                    disabled={status === 'sending'}
+                  >
+                    {status === 'sending' ? 'Sending…' : 'Submit Enquiry'}
                   </button>
+
+                  {status === 'error' && (
+                    <p className="form-error">
+                      Something went wrong sending your enquiry. Please email{' '}
+                      <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> instead.
+                    </p>
+                  )}
 
                   <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.58rem', letterSpacing: '0.12em', color: 'var(--charcoal-soft)', lineHeight: 1.6 }}>
                     Submitting does not guarantee a commission slot. I'll confirm availability and next steps via email.

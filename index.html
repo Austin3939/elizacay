@@ -29,6 +29,20 @@
     />
   </head>
   <body>
+    <!-- Netlify Forms detects forms in static HTML at deploy time. The real
+         form is rendered by React (src/pages/Commission.jsx) and submits via
+         fetch; this hidden copy just registers the "commission" form + fields. -->
+    <form name="commission" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="commission" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="type" />
+      <input type="text" name="budget" />
+      <input type="text" name="timeline" />
+      <textarea name="description"></textarea>
+      <input type="text" name="bot-field" />
+    </form>
+
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

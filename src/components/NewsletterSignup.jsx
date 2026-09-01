@@ -7,8 +7,9 @@ const CONSENT =
   'By subscribing you agree to receive occasional marketing emails from eliza cay. Unsubscribe anytime.'
 
 export default function NewsletterSignup({ variant = 'section' }) {
-  const [email, setEmail]   = useState('')
-  const [status, setStatus] = useState('idle') // idle | sending | done | error
+  const [email, setEmail]     = useState('')
+  const [company, setCompany] = useState('') // honeypot — real users never see this
+  const [status, setStatus]   = useState('idle') // idle | sending | done | error
   const [message, setMessage] = useState('')
 
   const handleSubmit = async e => {
@@ -19,7 +20,7 @@ export default function NewsletterSignup({ variant = 'section' }) {
       const res = await fetch(ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, company }),
       })
       if (res.ok) {
         setStatus('done')
@@ -42,6 +43,16 @@ export default function NewsletterSignup({ variant = 'section' }) {
         ) : (
           <>
             <form onSubmit={handleSubmit} className="newsletter-compact-form">
+              <input
+                type="text"
+                name="company"
+                className="hp-field"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                value={company}
+                onChange={e => setCompany(e.target.value)}
+              />
               <input
                 type="email"
                 required
@@ -78,6 +89,16 @@ export default function NewsletterSignup({ variant = 'section' }) {
           ) : (
             <>
               <form onSubmit={handleSubmit} className="newsletter-form">
+                <input
+                  type="text"
+                  name="company"
+                  className="hp-field"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  value={company}
+                  onChange={e => setCompany(e.target.value)}
+                />
                 <input
                   type="email"
                   required

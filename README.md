@@ -56,7 +56,10 @@ Never commit `.env`.
   works on a deployed site or under `netlify dev`, not `npm run preview`.
 - **Newsletter** — `netlify/functions/subscribe.mjs` creates a Shopify customer
   with email-marketing consent; send campaigns from **Shopify Admin → Marketing →
-  Shopify Email**. Requires the two `SHOPIFY_*` vars above.
+  Shopify Email**. Requires the two `SHOPIFY_*` vars above. The function is public,
+  so it also does a honeypot check, an origin allowlist, and a best-effort
+  in-memory rate limit — scope `SHOPIFY_ADMIN_API_TOKEN` to the Production context
+  and keep Shopify double opt-in on for real protection.
 
 The site runs without any of these — placeholder artwork and empty "coming soon"
 states show until Shopify is connected.

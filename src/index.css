@@ -1933,3 +1933,83 @@ main { position: relative; z-index: 1; }
 @media (max-width: 600px) {
   .journal-grid { grid-template-columns: 1fr; gap: 32px; }
 }
+
+/* =====================
+   Accessibility
+   ===================== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -60px;
+  z-index: 2000;
+  background: var(--charcoal);
+  color: var(--cream);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 12px 18px;
+  transition: top 0.2s ease;
+}
+.skip-link:focus { top: 12px; }
+
+/* Visible keyboard focus for everything interactive */
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--charcoal);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+.btn-light:focus-visible,
+.nav-mobile a:focus-visible,
+.footer a:focus-visible,
+.newsletter-input:focus-visible {
+  outline-color: var(--cream);
+}
+.form-group input:focus-visible,
+.form-group textarea:focus-visible,
+.form-group select:focus-visible {
+  outline: 2px solid var(--charcoal);
+  outline-offset: 4px;
+}
+
+/* Honeypot — visually and functionally hidden from real users */
+.hp-field {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =====================
+   404
+   ===================== */
+.notfound-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 8px 0 120px;
+}

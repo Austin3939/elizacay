@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom'
 import { getCollectionProducts, isConfigured } from '../lib/shopify'
 import { useCart } from '../context/CartContext'
 import ArtPlaceholder from '../components/ArtPlaceholder'
+import Seo from '../components/Seo'
 
 /* ── Live product option ─────────────────────────────────── */
 function ProductOption({ product }) {
@@ -95,6 +96,13 @@ export default function Design() {
 
   return (
     <div className="design-page">
+      <Seo
+        title={designTitle}
+        description={`${designTitle} by eliza cay — available as limited-edition prints and on apparel.`}
+        image={designImage?.url || undefined}
+        path={`/design/${slug}`}
+      />
+
       <div className="design-layout">
 
         {/* Left — artwork */}

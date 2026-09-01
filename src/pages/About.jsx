@@ -1,10 +1,18 @@
 import { Link } from 'react-router-dom'
 import ArtPlaceholder from '../components/ArtPlaceholder'
 import SocialLinks from '../components/SocialLinks'
+import Seo from '../components/Seo'
 
 export default function About() {
   return (
     <>
+      <Seo
+        title="About"
+        description="Liz is a queer visual artist in Grand Rapids, Michigan, working in block printing and illustration — drawing on myth, history, and folk stories."
+        path="/about"
+        image="https://elizacaystudio.com/images/artist-photo.jpg"
+      />
+
       {/* ── Hero ──────────────────────────────────────────── */}
       <section className="about-hero">
         <div className="container">

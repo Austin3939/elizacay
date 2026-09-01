@@ -3,6 +3,7 @@ import { useSearchParams, Link } from 'react-router-dom'
 import { getProducts, isConfigured } from '../lib/shopify'
 import { useCart } from '../context/CartContext'
 import ArtPlaceholder from '../components/ArtPlaceholder'
+import Seo from '../components/Seo'
 
 /* ── Normalize Shopify product → common card shape ────────── */
 function normalize(product, idx) {
@@ -147,6 +148,12 @@ export default function Shop() {
 
   return (
     <>
+      <Seo
+        title="Shop"
+        description="Limited-edition prints of original block prints and illustration, plus original designs on quality apparel — shipped with care."
+        path="/shop"
+      />
+
       <div className="page-header">
         <div className="container">
           <span className="tag">Eliza Cay</span>

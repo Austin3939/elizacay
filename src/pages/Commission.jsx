@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Seo from '../components/Seo'
 
 const PROCESS = [
   {
@@ -26,18 +27,33 @@ const PROCESS = [
 export default function Commission() {
   const [form, setForm] = useState({
     name: '', email: '', type: '', budget: '', timeline: '', description: '',
+    company: '', // honeypot — real users never see or fill this
   })
   const [sent, setSent] = useState(false)
+  const [loadedAt] = useState(() => Date.now())
 
   const handle = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }))
 
   const submit = e => {
     e.preventDefault()
+    // Bot filters: honeypot filled, or submitted implausibly fast.
+    // Show the success state either way so bots get no signal.
+    if (form.company || Date.now() - loadedAt < 3000) {
+      setSent(true)
+      return
+    }
+    // TODO: POST to the form endpoint once delivery is wired (see STATUS doc).
     setSent(true)
   }
 
   return (
     <>
+      <Seo
+        title="Commission Work"
+        description="Commission a custom block print or illustration made by hand — illustration, portraits, place and event pieces, apparel graphics."
+        path="/commission"
+      />
+
       {/* ── Hero ──────────────────────────────────────────── */}
       <section className="commission-hero">
         <div className="container">
@@ -113,6 +129,17 @@ export default function Commission() {
                 </div>
               ) : (
                 <form className="commission-form" onSubmit={submit}>
+                  <input
+                    type="text"
+                    name="company"
+                    className="hp-field"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    value={form.company}
+                    onChange={handle}
+                  />
+
                   <div className="form-row">
                     <div className="form-group">
                       <label htmlFor="name">Name</label>

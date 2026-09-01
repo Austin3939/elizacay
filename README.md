@@ -39,11 +39,27 @@ list; the short version:
 | `VITE_SHOPIFY_STORE_DOMAIN` | yes | `your-store.myshopify.com`, no `https://` |
 | `VITE_SHOPIFY_STOREFRONT_TOKEN` | yes | Public Storefront token — see below |
 | `VITE_INSTAGRAM_URL` / `VITE_TIKTOK_URL` / `VITE_PINTEREST_URL` | no | Override the `@elizacaystudio` defaults in `src/data/social.js` |
-| `VITE_NEWSLETTER_ACTION` | no | Mailchimp/Kit/Klaviyo form endpoint; blank = success message, no send |
+| `SHOPIFY_STORE_DOMAIN` | for newsletter | Server-side only (Netlify Function). Same value as `VITE_SHOPIFY_STORE_DOMAIN` |
+| `SHOPIFY_ADMIN_API_TOKEN` | for newsletter | **Secret.** Admin API token with `write_customers`. Used by `netlify/functions/subscribe.mjs` only — never bundled |
 
-`VITE_*` values are inlined at **build time**. On Netlify they must be set in
-**Site settings → Environment variables**, and a change only takes effect on the
-next deploy. Never commit `.env`.
+`VITE_*` values are inlined into the client bundle at **build time**. The two
+non-`VITE_` Shopify vars are read at request time by the newsletter function and
+must never be exposed to the client. On Netlify all of these go in **Site
+settings → Environment variables**; changes take effect on the next deploy.
+Never commit `.env`.
+
+### Forms
+
+- **Commission enquiries** — [Netlify Forms](https://docs.netlify.com/forms/setup/).
+  A hidden detection form lives in `index.html`; `src/pages/Commission.jsx` submits
+  to it via `fetch`. Submissions appear in the Netlify dashboard (**Forms**). Only
+  works on a deployed site or under `netlify dev`, not `npm run preview`.
+- **Newsletter** — `netlify/functions/subscribe.mjs` creates a Shopify customer
+  with email-marketing consent; send campaigns from **Shopify Admin → Marketing →
+  Shopify Email**. Requires the two `SHOPIFY_*` vars above. The function is public,
+  so it also does a honeypot check, an origin allowlist, and a best-effort
+  in-memory rate limit — scope `SHOPIFY_ADMIN_API_TOKEN` to the Production context
+  and keep Shopify double opt-in on for real protection.
 
 The site runs without any of these — placeholder artwork and empty "coming soon"
 states show until Shopify is connected.

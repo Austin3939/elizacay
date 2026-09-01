@@ -1,0 +1,6 @@
+# Build command and publish directory are configured in the Netlify dashboard.
+# This file only declares the serverless functions directory.
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"

@@ -1800,6 +1800,28 @@ main { position: relative; z-index: 1; }
   color: var(--terracotta);
   margin-top: 12px;
 }
+.newsletter-consent {
+  font-family: var(--font-mono);
+  font-size: 0.52rem;
+  letter-spacing: 0.08em;
+  line-height: 1.7;
+  color: rgba(244, 239, 227, 0.45);
+  margin-top: 12px;
+  max-width: 42ch;
+}
+
+/* Commission form error (Netlify Forms submit failure) */
+.form-error {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  line-height: 1.7;
+  color: var(--terracotta);
+}
+.form-error a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 
 /* Compact (footer) variant */
 .newsletter-compact { width: 100%; }

@@ -21,6 +21,7 @@ export default function Footer() {
               <li><Link to="/shop">Shop</Link></li>
               <li><Link to="/commission">Commission Work</Link></li>
               <li><Link to="/about">About</Link></li>
+              <li><a href="mailto:hello@elizacaystudio.com">Contact</a></li>
             </ul>
           </div>
 

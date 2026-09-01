@@ -29,16 +29,30 @@ npm run dev
 
 The site works without Shopify credentials — placeholder artwork and static product listings are shown until you connect the store.
 
-## Connecting Shopify
+## Environment variables
 
-Create a `.env` file in the project root:
+Copy `.env.example` to `.env` and fill it in. `.env.example` is the authoritative
+list; the short version:
 
-```
-VITE_SHOPIFY_STORE_DOMAIN=your-store.myshopify.com
-VITE_SHOPIFY_STOREFRONT_TOKEN=your-storefront-access-token
-```
+| Variable | Required | Notes |
+|---|---|---|
+| `VITE_SHOPIFY_STORE_DOMAIN` | yes | `your-store.myshopify.com`, no `https://` |
+| `VITE_SHOPIFY_STOREFRONT_TOKEN` | yes | Public Storefront token — see below |
+| `VITE_INSTAGRAM_URL` / `VITE_TIKTOK_URL` / `VITE_PINTEREST_URL` | no | Override the `@elizacaystudio` defaults in `src/data/social.js` |
+| `VITE_NEWSLETTER_ACTION` | no | Mailchimp/Kit/Klaviyo form endpoint; blank = success message, no send |
 
-The Storefront Access Token is found in Shopify Admin → Apps → Develop apps → your app → API credentials. Enable the Storefront API with `unauthenticated_read_product_listings`, `unauthenticated_read_product_inventory`, and `unauthenticated_write_checkouts` scopes.
+`VITE_*` values are inlined at **build time**. On Netlify they must be set in
+**Site settings → Environment variables**, and a change only takes effect on the
+next deploy. Never commit `.env`.
+
+The site runs without any of these — placeholder artwork and empty "coming soon"
+states show until Shopify is connected.
+
+### Getting the Storefront token
+
+Install the **Headless** app in Shopify, then: Admin → Sales channels → Headless
+→ your storefront → Storefront API → Manage → copy the **Public access token**.
+It's safe to expose in client JS; it ships in the bundle by design.
 
 Once configured, the site fetches live products, collections, and manages a real Shopify cart with checkout.
 
@@ -77,13 +91,20 @@ All placeholder content is marked with `✏️ CLIENT:` comments. Key items:
 ## Build & Deploy
 
 ```bash
-npm run build   # outputs to /dist
+npm run build   # vite build + prerender → /dist
 npm run preview # preview the production build locally
 ```
 
-Deploy the `/dist` folder to any static host (Netlify, Vercel, Cloudflare Pages). Ensure the host is configured to serve `index.html` for all routes (SPA fallback).
+`npm run build` also prerenders the static routes (`/`, `/gallery`, `/shop`,
+`/commission`, `/about`, `/404`) to real HTML via headless Chrome, so the build
+downloads Chromium on first `npm install` and takes ~1–2 min longer. Route list
+lives in `vite.config.js` and must stay in sync with `src/App.jsx`.
 
-Set the `VITE_SHOPIFY_*` environment variables in your host's dashboard — do not commit `.env` to version control.
+Deploy `/dist` to any static host (Netlify, Vercel, Cloudflare Pages) configured
+to serve `index.html` for unmatched routes (SPA fallback — see `public/_redirects`).
+
+Set every environment variable from the table above in the host's dashboard
+(at minimum the two `VITE_SHOPIFY_*` values) and redeploy. Do not commit `.env`.
 
 ## Known Issues
 

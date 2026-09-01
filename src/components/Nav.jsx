@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
 
@@ -6,6 +6,13 @@ export default function Nav() {
   const [open, setOpen] = useState(false)
   const close = () => setOpen(false)
   const { totalQty, openCart } = useCart()
+
+  useEffect(() => {
+    if (!open) return
+    const onKey = e => { if (e.key === 'Escape') setOpen(false) }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [open])
 
   return (
     <>
@@ -47,13 +54,15 @@ export default function Nav() {
             className={`nav-burger${open ? ' open' : ''}`}
             onClick={() => setOpen(o => !o)}
             aria-label="Toggle navigation"
+            aria-expanded={open}
+            aria-controls="nav-mobile"
           >
             <span /><span /><span />
           </button>
         </div>
       </nav>
 
-      <div className={`nav-mobile${open ? ' open' : ''}`}>
+      <div id="nav-mobile" className={`nav-mobile${open ? ' open' : ''}`}>
         {LINKS.map(({ to, label }) => (
           <NavLink
             key={to}

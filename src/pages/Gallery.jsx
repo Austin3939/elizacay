@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { getCollections, isConfigured } from '../lib/shopify'
 import ArtPlaceholder from '../components/ArtPlaceholder'
+import Seo from '../components/Seo'
 
 export default function Gallery() {
   const [collections, setCollections] = useState([])
@@ -20,6 +21,12 @@ export default function Gallery() {
 
   return (
     <>
+      <Seo
+        title="Gallery"
+        description="Original block-print and illustration designs by eliza cay — available as limited-edition prints and on apparel."
+        path="/gallery"
+      />
+
       <div className="page-header">
         <div className="container">
           <span className="tag">Eliza Cay</span>

@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom'
 import { getProduct, isConfigured } from '../lib/shopify'
 import { useCart } from '../context/CartContext'
 import ArtPlaceholder from '../components/ArtPlaceholder'
+import Seo from '../components/Seo'
 
 export default function Product() {
   const { handle } = useParams()
@@ -70,6 +71,13 @@ export default function Product() {
 
   return (
     <div className="product-page">
+      <Seo
+        title={title}
+        description={desc || `${title} — ${type || 'artwork'} by eliza cay.`}
+        image={imageUrl || undefined}
+        path={`/product/${handle}`}
+      />
+
       {/* Image */}
       <div className="product-image-wrap">
         {imageUrl

@@ -11,6 +11,7 @@ import Commission from './pages/Commission'
 import About from './pages/About'
 import Design from './pages/Design'
 import Product from './pages/Product'
+import NotFound from './pages/NotFound'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -22,9 +23,10 @@ export default function App() {
   return (
     <CartProvider>
       <ScrollToTop />
+      <a href="#main-content" className="skip-link">Skip to content</a>
       <Nav />
       <CartDrawer />
-      <main>
+      <main id="main-content">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/gallery" element={<Gallery />} />
@@ -33,6 +35,7 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/design/:slug" element={<Design />} />
           <Route path="/product/:handle" element={<Product />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />

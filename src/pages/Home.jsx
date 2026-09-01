@@ -5,6 +5,7 @@ import { useCart } from '../context/CartContext'
 import ArtPlaceholder from '../components/ArtPlaceholder'
 import SocialLinks from '../components/SocialLinks'
 import NewsletterSignup from '../components/NewsletterSignup'
+import Seo from '../components/Seo'
 
 function FeaturedCard({ product }) {
   const { addToCart } = useCart()
@@ -66,9 +67,12 @@ export default function Home() {
 
   return (
     <>
+      <Seo path="/" />
+
       {/* ── Hero ──────────────────────────────────────────── */}
       <section className="hero">
         <div className="hero-inner">
+          <h1 className="sr-only">eliza cay — block prints and illustration by Liz</h1>
           <img
             src="/images/logo-full.png"
             alt="eliza cay"

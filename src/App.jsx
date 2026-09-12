@@ -11,6 +11,7 @@ import Commission from './pages/Commission'
 import About from './pages/About'
 import Design from './pages/Design'
 import Product from './pages/Product'
+import Join from './pages/Join'
 import NotFound from './pages/NotFound'
 
 function ScrollToTop() {
@@ -20,11 +21,14 @@ function ScrollToTop() {
 }
 
 export default function App() {
+  const { pathname } = useLocation()
+  const bare = pathname === '/join' // no nav/footer — nothing to tap away to from a QR scan
+
   return (
     <CartProvider>
       <ScrollToTop />
       <a href="#main-content" className="skip-link">Skip to content</a>
-      <Nav />
+      {!bare && <Nav />}
       <CartDrawer />
       <main id="main-content">
         <Routes>
@@ -35,10 +39,11 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/design/:slug" element={<Design />} />
           <Route path="/product/:handle" element={<Product />} />
+          <Route path="/join" element={<Join />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
-      <Footer />
+      {!bare && <Footer />}
     </CartProvider>
   )
 }

@@ -7,7 +7,7 @@ const SITE_URL = 'https://elizacaystudio.com'
 // Static routes worth prerendering to real HTML so crawlers that don't run JS
 // (Pinterest, Facebook, Twitter) get correct <title>/OG tags. Dynamic
 // product/design routes are left to client-side rendering.
-const PRERENDER_ROUTES = ['/', '/gallery', '/shop', '/commission', '/about', '/404']
+const PRERENDER_ROUTES = ['/', '/gallery', '/shop', '/commission', '/about', '/join', '/404']
 
 export default defineConfig({
   plugins: [

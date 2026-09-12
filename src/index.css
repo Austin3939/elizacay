@@ -1810,6 +1810,33 @@ main { position: relative; z-index: 1; }
   max-width: 42ch;
 }
 
+/* Bare QR-landing page (/join) — no nav/footer, just the signup form centered */
+.join-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--charcoal);
+}
+.join-page .newsletter-section { padding: 40px 0; }
+.join-page .newsletter-inner { text-align: center; margin: 0 auto; }
+.join-page .newsletter-form { justify-content: center; }
+.join-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.join-logo-icon { height: 40px; width: auto; }
+.join-logo-text {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  color: var(--cream);
+}
+
 /* Commission form error (Netlify Forms submit failure) */
 .form-error {
   font-family: var(--font-mono);

@@ -1818,11 +1818,32 @@ main { position: relative; z-index: 1; }
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: var(--charcoal);
+  background: var(--cream);
 }
-.join-page .newsletter-section { padding: 40px 0; }
+.join-page .newsletter-section {
+  padding: 40px 0;
+  background: transparent;
+  color: var(--charcoal);
+}
 .join-page .newsletter-inner { text-align: center; margin: 0 auto; }
+.join-page .newsletter-inner h2 { color: var(--charcoal); }
+.join-page .newsletter-inner p { color: var(--charcoal-soft); }
+.join-page .tag-light { color: var(--olive-dark); }
 .join-page .newsletter-form { justify-content: center; }
+.join-page .newsletter-input {
+  border: 1px solid var(--olive-light);
+  background: var(--cream-dark);
+  color: var(--charcoal);
+}
+.join-page .newsletter-input::placeholder { color: rgba(42,41,39,0.4); }
+.join-page .newsletter-input:focus { border-color: var(--olive-dark); }
+.join-page .btn-light {
+  background: var(--olive-dark);
+  color: var(--cream);
+  border-color: var(--olive-dark);
+}
+.join-page .btn-light:hover { background: var(--olive); border-color: var(--olive); }
+.join-page .newsletter-consent { color: var(--charcoal-soft); opacity: 0.85; }
 .join-logo {
   display: flex;
   align-items: center;
@@ -1834,7 +1855,7 @@ main { position: relative; z-index: 1; }
   font-family: var(--font-mono);
   font-size: 0.95rem;
   letter-spacing: 0.12em;
-  color: var(--cream);
+  color: var(--olive-dark);
 }
 
 /* Commission form error (Netlify Forms submit failure) */

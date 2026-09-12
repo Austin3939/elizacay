@@ -1,6 +1,12 @@
 # Build command and publish directory are configured in the Netlify dashboard.
 # This file only declares the serverless functions directory.
 
+[build.environment]
+  # SHOPIFY_STORE_DOMAIN shares its value with the public VITE_SHOPIFY_STORE_DOMAIN
+  # (which is meant to be inlined into the client bundle), so Netlify's secrets
+  # scanner flags it as a false positive. It is not sensitive on its own.
+  SECRETS_SCAN_OMIT_KEYS = "SHOPIFY_STORE_DOMAIN"
+
 [functions]
   directory = "netlify/functions"
   node_bundler = "esbuild"

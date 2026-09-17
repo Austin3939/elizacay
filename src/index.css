@@ -13,6 +13,7 @@
   --terracotta:     #8B3838;
   --slate:          #5B6E7A;
   --leaf:           #5A6440;
+  --flower-red:     #56291E;
 
   --font-mono:      'Courier Prime', 'Courier New', monospace;
   --font-serif:     'Cormorant Garamond', Georgia, serif;
@@ -1389,14 +1390,14 @@ main { position: relative; z-index: 1; }
   font-size: 0.55rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--charcoal);
-  border: 1px solid var(--charcoal);
+  color: var(--flower-red);
+  border: 1px solid var(--flower-red);
   padding: 8px 18px;
   transition: background 0.2s ease, color 0.2s ease;
   white-space: nowrap;
 }
 .nav-subscribe:hover {
-  background: var(--charcoal);
+  background: var(--flower-red);
   color: var(--cream);
 }
 @media (max-width: 768px) {
@@ -1408,14 +1409,14 @@ main { position: relative; z-index: 1; }
   font-size: 0.65rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--cream);
-  border: 1px solid rgba(244,239,227,0.4);
+  color: var(--flower-red);
+  border: 1px solid var(--flower-red);
   padding: 12px 24px;
   text-align: center;
   margin-top: 8px;
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease;
 }
-.nav-mobile-subscribe:hover { background: rgba(244,239,227,0.08); }
+.nav-mobile-subscribe:hover { background: var(--flower-red); color: var(--cream); }
 
 .nav-cart-badge {
   position: absolute;

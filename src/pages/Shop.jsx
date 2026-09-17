@@ -124,13 +124,15 @@ function ShopComingSoon() {
 /* ── Page ─────────────────────────────────────────────────── */
 export default function Shop() {
   const [searchParams] = useSearchParams()
-  const [tab, setTab]  = useState('prints')
+  const [tab, setTab]  = useState('all')
   const [live, setLive]  = useState({ prints: [], apparel: [] })
   const [fetching, setFetching] = useState(isConfigured)
 
   useEffect(() => {
-    if (searchParams.get('tab') === 'apparel') setTab('apparel')
-    else setTab('prints')
+    const t = searchParams.get('tab')
+    if (t === 'apparel') setTab('apparel')
+    else if (t === 'prints') setTab('prints')
+    else setTab('all')
   }, [searchParams])
 
   useEffect(() => {
@@ -144,7 +146,7 @@ export default function Shop() {
 
   const { prints, apparel } = live
   const hasAny = prints.length + apparel.length > 0
-  const current = tab === 'prints' ? prints : apparel
+  const current = tab === 'all' ? [...prints, ...apparel] : tab === 'prints' ? prints : apparel
 
   return (
     <>
@@ -175,6 +177,9 @@ export default function Shop() {
         ) : (
           <>
             <div className="shop-tabs">
+              <button className={tab === 'all'     ? 'active' : ''} onClick={() => setTab('all')}>
+                All
+              </button>
               <button className={tab === 'prints'  ? 'active' : ''} onClick={() => setTab('prints')}>
                 Art Prints
               </button>
@@ -190,7 +195,7 @@ export default function Shop() {
                 ))}
                 {current.length === 0 && (
                   <p className="shop-empty">
-                    Nothing in {tab === 'prints' ? 'prints' : 'apparel'} just yet — check back soon.
+                    Nothing in {tab === 'all' ? 'the shop' : tab === 'prints' ? 'prints' : 'apparel'} just yet — check back soon.
                   </p>
                 )}
               </div>

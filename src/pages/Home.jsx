@@ -78,7 +78,6 @@ export default function Home() {
             alt="eliza cay"
             className="hero-logo"
           />
-          <div className="hero-rule" />
           <p className="hero-sub">
             shop limited prints/apparel &nbsp;·&nbsp; original art &nbsp;·&nbsp; commissions
           </p>

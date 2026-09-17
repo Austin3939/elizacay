@@ -580,25 +580,9 @@ main { position: relative; z-index: 1; }
 
 /* Same olive hero treatment as .commission-hero / .about-hero */
 .page-header-olive {
-  position: relative;
-  overflow: hidden;
-  background: var(--charcoal);
+  background: var(--olive);
   padding: 72px 0 56px;
 }
-.page-header-olive::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  opacity: 0.5;
-  background-image:
-    radial-gradient(circle at 8% 30%, rgba(86,41,30,0.4) 0 2px, transparent 3px),
-    radial-gradient(circle at 92% 22%, rgba(86,41,30,0.32) 0 2px, transparent 3px),
-    radial-gradient(circle at 32% 85%, rgba(86,41,30,0.32) 0 2px, transparent 3px),
-    radial-gradient(circle at 78% 80%, rgba(86,41,30,0.4) 0 2px, transparent 3px);
-  background-size: 160px 160px;
-}
-.page-header-olive .container { position: relative; z-index: 1; }
-.page-header-olive .tag { color: var(--flower-red); }
 .page-header-olive h1 {
   font-family: var(--font-mono);
   font-size: clamp(1.6rem, 3vw, 2.4rem);

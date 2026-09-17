@@ -31,7 +31,7 @@
    Reset & Base
    ===================== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
+html { scroll-behavior: smooth; font-size: 17px; }
 body {
   font-family: var(--font-serif);
   font-weight: 300;
@@ -382,7 +382,7 @@ main { position: relative; z-index: 1; }
 }
 
 .hero-logo {
-  height: 216px;
+  height: 280px;
   width: auto;
   filter: brightness(1.05);
 }
@@ -591,6 +591,28 @@ main { position: relative; z-index: 1; }
 .page-header p {
   font-size: 1rem;
   color: var(--charcoal-soft);
+  max-width: 540px;
+  line-height: 1.7;
+}
+
+/* Same olive hero treatment as .commission-hero / .about-hero */
+.page-header-olive {
+  background: var(--olive);
+  padding: 72px 0 56px;
+}
+.page-header-olive h1 {
+  font-family: var(--font-mono);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--cream);
+  margin-bottom: 14px;
+}
+.page-header-olive p {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: rgba(244,239,227,0.75);
   max-width: 540px;
   line-height: 1.7;
 }
@@ -1730,7 +1752,7 @@ main { position: relative; z-index: 1; }
   .about-philosophy-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
 
   .hero-inner { padding: 58px 43px; }
-  .hero-logo { height: 168px; }
+  .hero-logo { height: 216px; }
 }
 
 @media (max-width: 640px) {
@@ -1749,7 +1771,7 @@ main { position: relative; z-index: 1; }
 
   .hero-inner { padding: 48px 20px; }
   .hero-cta { flex-direction: column; align-items: center; }
-  .hero-logo { height: 144px; }
+  .hero-logo { height: 180px; }
 
   .footer-grid { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; gap: 10px; }
@@ -1770,6 +1792,8 @@ main { position: relative; z-index: 1; }
 
   .page-header { padding: 48px 0 36px; }
   .page-header h1 { font-size: 1.6rem; }
+  .page-header-olive { padding: 48px 0 36px; }
+  .page-header-olive h1 { font-size: 1.6rem; }
 }
 
 /* =====================

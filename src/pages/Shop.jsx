@@ -156,9 +156,9 @@ export default function Shop() {
         path="/shop"
       />
 
-      <div className="page-header">
+      <div className="page-header-olive">
         <div className="container">
-          <span className="tag">Eliza Cay</span>
+          <span className="tag tag-light">Eliza Cay</span>
           <h1>Shop</h1>
           <p>
             Limited-edition prints and original designs on quality apparel —

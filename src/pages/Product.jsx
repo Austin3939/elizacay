@@ -78,57 +78,58 @@ export default function Product() {
         path={`/product/${handle}`}
       />
 
-      {/* Image */}
-      <div className="product-image-wrap">
-        {imageUrl
-          ? <img src={imageUrl} alt={imageAlt} />
-          : <ArtPlaceholder />
-        }
-      </div>
-
-      {/* Details */}
       <div className="container">
-        <div className="product-body">
-          <Link to="/shop" className="product-back">← Shop</Link>
+        <Link to="/shop" className="product-back">← Shop</Link>
 
-          {type && <span className="tag" style={{ margin: '0 0 12px' }}>{type}</span>}
-          <h1 className="product-title">{title}</h1>
-          <span className="product-price">{displayPrice}</span>
+        <div className="product-split">
+          <div className="product-image-wrap">
+            {imageUrl
+              ? <img src={imageUrl} alt={imageAlt} />
+              : <ArtPlaceholder />
+            }
+          </div>
 
-          {variants.length > 1 && (
-            <div className="product-variants">
-              <span className="product-variant-label">
-                {type.toLowerCase().includes('apparel') ? 'Size' : 'Size / Format'}
-              </span>
-              <div className="product-variant-pills">
-                {variants.map(v => (
-                  <button
-                    key={v.id}
-                    className={`variant-pill${selectedVariant?.id === v.id ? ' active' : ''}${!v.availableForSale ? ' sold-out' : ''}`}
-                    onClick={() => v.availableForSale && setSelectedVariant(v)}
-                    disabled={!v.availableForSale}
-                  >
-                    {v.title}{!v.availableForSale ? ' — Sold out' : ''}
-                  </button>
-                ))}
+          <div className="product-body">
+            {type && <span className="tag" style={{ margin: '0 0 12px' }}>{type}</span>}
+            <h1 className="product-title">{title}</h1>
+            <div className="product-rule" />
+            <span className="product-price">{displayPrice}</span>
+
+            {variants.length > 1 && (
+              <div className="product-variants">
+                <span className="product-variant-label">
+                  {type.toLowerCase().includes('apparel') ? 'Size' : 'Size / Format'}
+                </span>
+                <div className="product-variant-pills">
+                  {variants.map(v => (
+                    <button
+                      key={v.id}
+                      className={`variant-pill${selectedVariant?.id === v.id ? ' active' : ''}${!v.availableForSale ? ' sold-out' : ''}`}
+                      onClick={() => v.availableForSale && setSelectedVariant(v)}
+                      disabled={!v.availableForSale}
+                    >
+                      {v.title}{!v.availableForSale ? ' — Sold out' : ''}
+                    </button>
+                  ))}
+                </div>
               </div>
-            </div>
-          )}
+            )}
 
-          <button
-            className="btn btn-dark product-atc"
-            onClick={handleAdd}
-            disabled={adding || !selectedVariant?.availableForSale}
-          >
-            {adding ? 'Adding…' : 'Add to Cart'}
-          </button>
+            <button
+              className="btn btn-dark product-atc"
+              onClick={handleAdd}
+              disabled={adding || !selectedVariant?.availableForSale}
+            >
+              {adding ? 'Adding…' : 'Add to Cart'}
+            </button>
 
-          {desc && (
-            <>
-              <hr className="product-divider" />
-              <p className="product-description">{desc}</p>
-            </>
-          )}
+            {desc && (
+              <>
+                <hr className="product-divider" />
+                <p className="product-description">{desc}</p>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </div>

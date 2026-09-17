@@ -13,11 +13,13 @@ export default function Product() {
   const [loading, setLoading] = useState(isConfigured)
   const [adding, setAdding]   = useState(false)
   const [selectedVariant, setSelectedVariant] = useState(null)
+  const [activeImage, setActiveImage] = useState(0)
 
   useEffect(() => {
     if (!isConfigured) { setLoading(false); return }
     setProduct(null)
     setLoading(true)
+    setActiveImage(0)
     getProduct(handle)
       .then(setProduct)
       .catch(console.error)
@@ -32,11 +34,12 @@ export default function Product() {
     }
   }, [product])
 
-  const title    = product?.title ?? ''
-  const type     = product?.productType ?? ''
-  const desc     = product?.description ?? ''
-  const imageUrl = product?.images?.edges?.[0]?.node?.url ?? null
-  const imageAlt = product?.images?.edges?.[0]?.node?.altText || title
+  const title  = product?.title ?? ''
+  const type   = product?.productType ?? ''
+  const desc   = product?.description ?? ''
+  const images = product?.images?.edges?.map(e => e.node) ?? []
+  const imageUrl = images[activeImage]?.url ?? null
+  const imageAlt = images[activeImage]?.altText || title
 
   const displayPrice = (() => {
     if (!selectedVariant) return ''
@@ -82,11 +85,28 @@ export default function Product() {
         <Link to="/shop" className="product-back">← Shop</Link>
 
         <div className="product-split">
-          <div className="product-image-wrap">
-            {imageUrl
-              ? <img src={imageUrl} alt={imageAlt} />
-              : <ArtPlaceholder />
-            }
+          <div className="product-image-col">
+            <div className="product-image-wrap">
+              {imageUrl
+                ? <img src={imageUrl} alt={imageAlt} />
+                : <ArtPlaceholder />
+              }
+            </div>
+
+            {images.length > 1 && (
+              <div className="product-thumbs">
+                {images.map((img, i) => (
+                  <button
+                    key={img.url}
+                    className={`product-thumb${i === activeImage ? ' active' : ''}`}
+                    onClick={() => setActiveImage(i)}
+                    aria-label={`Show photo ${i + 1} of ${images.length}`}
+                  >
+                    <img src={img.url} alt="" />
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           <div className="product-body">

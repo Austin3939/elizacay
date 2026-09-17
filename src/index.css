@@ -367,25 +367,8 @@ main { position: relative; z-index: 1; }
   padding: 40px 96px;
 }
 
-/* four-corner thin-line frame */
-.hero-inner::before,
-.hero-inner::after {
-  content: '';
-  position: absolute;
-  pointer-events: none;
-}
-.hero-inner::before {
-  inset: 0;
-  border: var(--line-cream);
-}
-.hero-inner::after {
-  inset: 8px;
-  border: var(--line-cream);
-  opacity: 0.35;
-}
-
 .hero-logo {
-  height: 280px;
+  height: 360px;
   width: auto;
   filter: brightness(1.05);
 }
@@ -402,7 +385,7 @@ main { position: relative; z-index: 1; }
 .hero-sub {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
   color: rgba(244,239,227,0.7);
   letter-spacing: 0.05em;
 }
@@ -420,6 +403,10 @@ main { position: relative; z-index: 1; }
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 8px;
+}
+.hero-cta .btn {
+  font-size: 0.8rem;
+  padding: 16px 42px;
 }
 
 .hero-social {
@@ -1772,7 +1759,7 @@ main { position: relative; z-index: 1; }
   .about-philosophy-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
 
   .hero-inner { padding: 58px 43px; }
-  .hero-logo { height: 216px; }
+  .hero-logo { height: 280px; }
 }
 
 @media (max-width: 640px) {
@@ -1791,7 +1778,7 @@ main { position: relative; z-index: 1; }
 
   .hero-inner { padding: 48px 20px; }
   .hero-cta { flex-direction: column; align-items: center; }
-  .hero-logo { height: 180px; }
+  .hero-logo { height: 220px; }
 
   .footer-grid { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; gap: 10px; }

@@ -78,12 +78,11 @@ export default function Home() {
             alt="eliza cay"
             className="hero-logo"
           />
-          <div className="hero-rule" />
           <p className="hero-sub">
             shop limited prints/apparel &nbsp;·&nbsp; original art &nbsp;·&nbsp; commissions
           </p>
           <div className="hero-cta">
-            <Link to="/shop" className="btn btn-light">Shop Prints</Link>
+            <Link to="/shop" className="btn btn-light">Shop</Link>
             <Link to="/commission" className="btn btn-light">Commission Work</Link>
           </div>
           <div className="hero-social">

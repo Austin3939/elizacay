@@ -27,9 +27,9 @@ export default function Gallery() {
         path="/gallery"
       />
 
-      <div className="page-header">
+      <div className="page-header-olive">
         <div className="container">
-          <span className="tag">Eliza Cay</span>
+          <span className="tag tag-light">Eliza Cay</span>
           <h1>Gallery</h1>
           <p>Original designs — available as prints and on apparel.</p>
         </div>

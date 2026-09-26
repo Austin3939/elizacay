@@ -1,14 +1,1 @@
-# Proxy Shopify-hosted checkout/cart/account/theme-asset paths through to
-# Shopify so checkout stays on the elizacaystudio.com domain end-to-end.
-/cdn/*                    https://eliza-cay-studio.myshopify.com/cdn/:splat                    200
-/checkouts/*              https://eliza-cay-studio.myshopify.com/checkouts/:splat              200
-/checkout/*               https://eliza-cay-studio.myshopify.com/checkout/:splat               200
-/checkout                 https://eliza-cay-studio.myshopify.com/checkout                       200
-/cart/*                   https://eliza-cay-studio.myshopify.com/cart/:splat                   200
-/account/*                https://eliza-cay-studio.myshopify.com/account/:splat                200
-/apps/*                   https://eliza-cay-studio.myshopify.com/apps/:splat                   200
-/.well-known/shopify/*     https://eliza-cay-studio.myshopify.com/.well-known/shopify/:splat    200
-/api/*                     https://eliza-cay-studio.myshopify.com/api/:splat                    200
-/web-pixels*               https://eliza-cay-studio.myshopify.com/web-pixels:splat              200
-
 /*    /index.html   200

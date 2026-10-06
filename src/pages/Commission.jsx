@@ -24,8 +24,6 @@ const PROCESS = [
   },
 ]
 
-const CONTACT_EMAIL = 'hello@elizacaystudio.com'
-
 export default function Commission() {
   const [form, setForm] = useState({
     name: '', email: '', type: '', budget: '', timeline: '', description: '',
@@ -112,18 +110,18 @@ export default function Commission() {
 
               <dl className="commission-details" style={{ marginTop: '32px' }}>
                 <dt>Turnaround</dt>
-                <dd>Agreed with you up front, based on the scope of the piece</dd>
+                <dd>1–2 weeks for prints and illustrative work; 3–4 weeks for textile work</dd>
                 <dt>Deposit</dt>
-                <dd>A deposit secures your slot; the balance is due on completion</dd>
+                <dd>50% up front to secure your slot, applied to the final total; the remaining 50% is due on completion</dd>
                 <dt>Files</dt>
                 <dd>Print-ready files, or a shipped original on request</dd>
                 <dt>Revisions</dt>
-                <dd>Built into every project so we land it together</dd>
+                <dd>3 revisions included; each additional revision is $10</dd>
               </dl>
             </div>
 
             {/* Right: form */}
-            <div>
+            <div className="commission-form-card">
               <span className="tag">Enquiry Form</span>
 
               {status === 'sent' ? (
@@ -222,8 +220,7 @@ export default function Commission() {
 
                   {status === 'error' && (
                     <p className="form-error">
-                      Something went wrong sending your enquiry. Please email{' '}
-                      <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> instead.
+                      Something went wrong sending your enquiry. Please try again in a moment.
                     </p>
                   )}
 

@@ -9,6 +9,7 @@ import Gallery from './pages/Gallery'
 import Shop from './pages/Shop'
 import Commission from './pages/Commission'
 import About from './pages/About'
+import Contact from './pages/Contact'
 import Design from './pages/Design'
 import Product from './pages/Product'
 import Join from './pages/Join'
@@ -46,6 +47,7 @@ export default function App() {
           <Route path="/shop" element={<Shop />} />
           <Route path="/commission" element={<Commission />} />
           <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/design/:slug" element={<Design />} />
           <Route path="/product/:handle" element={<Product />} />
           <Route path="/join" element={<Join />} />
